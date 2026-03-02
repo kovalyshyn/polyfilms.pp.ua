@@ -35,7 +35,7 @@
 
 З питань тестування, співпраці або отримання додаткової інформації звертайтеся:
 * **Email:** [v@kovalyshyn.uk](mailto:v@kovalyshyn.uk)
-* **Fediverse:** [@v_koval@filmly.co.ua](https://filmly.co.ua/)
+* **Fediverse:** [filmly.co.ua](https://filmly.co.ua/)
 
 ---
 *Незалежне крафтове виробництво фотоматеріалів, 2026.*
