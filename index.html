@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PolyFilm Ortho20 | Крафтова ортохроматична плівка</title>
+    <title>PolyFilm Ortho20 | Крафтова українська емульсія</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
     <style>
@@ -13,6 +13,7 @@
             --accent: #ffffff;
             --gray: #1a1a1a;
             --border: #333;
+            --highlight: #d4af37; /* Silver/Gold tone */
         }
 
         body {
@@ -23,35 +24,29 @@
             line-height: 1.6;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        header { text-align: center; padding: 80px 0 40px; }
+        h1 { font-size: 3rem; letter-spacing: 0.3rem; text-transform: uppercase; margin: 0; font-weight: 300; }
+        .tagline { color: #888; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
 
-        header {
+        /* Quote Block */
+        .manifesto-quote {
+            max-width: 700px;
+            margin: 40px auto;
+            font-style: italic;
             text-align: center;
-            padding: 80px 0 40px;
+            color: #bbb;
+            border-left: none;
+            padding: 0 20px;
+            position: relative;
         }
+        .manifesto-quote::before { content: "«"; font-size: 3rem; position: absolute; left: -10px; top: -20px; color: var(--border); }
 
-        h1 {
-            font-size: 3rem;
-            letter-spacing: 0.3rem;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            font-weight: 300;
-        }
-
-        .tagline {
-            color: #888;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .description-text { max-width: 850px; margin: 40px auto; font-weight: 300; }
 
         .specs {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin: 40px 0;
             border-top: 1px solid var(--border);
@@ -59,115 +54,61 @@
             padding: 30px 0;
             text-align: center;
         }
+        .spec-item b { display: block; color: var(--accent); text-transform: uppercase; font-size: 0.7rem; margin-bottom: 5px; }
 
-        .spec-item b {
-            display: block;
-            color: var(--accent);
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
-        }
+        /* Info Grid */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 60px 0; }
+        .info-card { background: var(--gray); padding: 25px; border: 1px solid var(--border); }
+        .info-card h3 { margin-top: 0; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; color: var(--highlight); }
 
-        .description-text {
-            max-width: 800px;
-            margin: 40px auto;
-            text-align: center;
-            font-weight: 300;
-        }
+        /* Batch Log Table */
+        .batch-log { width: 100%; border-collapse: collapse; margin: 40px 0; font-size: 0.9rem; }
+        .batch-log th, .batch-log td { padding: 12px; border: 1px solid var(--border); text-align: left; }
+        .batch-log th { background: #111; text-transform: uppercase; font-size: 0.7rem; }
 
         .warning-box {
-            background: rgba(205, 0, 0, 0.05);
-            border-left: 3px solid #600;
-            padding: 20px;
-            margin: 30px 0;
-            font-size: 0.95rem;
+            background: rgba(205, 0, 0, 0.08);
+            border-left: 4px solid #800;
+            padding: 25px;
+            margin: 40px 0;
         }
 
-        .video-section {
-            margin: 60px 0;
-            text-align: center;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            border: 1px solid var(--border);
-            overflow: hidden;
-            background: #000;
-        }
-
-        .video-container img { width: 100%; display: block; opacity: 0.7; }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .gallery-item { background: var(--gray); aspect-ratio: 1 / 1; overflow: hidden; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 40px 0; }
+        .gallery-item { background: var(--gray); aspect-ratio: 1/1; overflow: hidden; cursor: zoom-in; }
         .gallery img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.5s; }
-        .gallery-item:hover img { transform: scale(1.05); filter: grayscale(0%); }
+        .gallery-item:hover img { filter: grayscale(0%); transform: scale(1.05); }
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            cursor: zoom-out;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal img {
-            max-width: 90%;
-            max-height: 80%;
-            border: 1px solid var(--border);
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        #modal-caption {
-            color: #888;
+        /* Button */
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            padding: 15px 35px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: 0.3s;
             margin-top: 20px;
-            font-size: 0.9rem;
-            max-width: 80%;
-            text-align: center;
-            font-weight: 300;
-            letter-spacing: 0.5px;
         }
+        .btn:hover { background: #ccc; transform: translateY(-2px); }
 
-        table {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            border-collapse: collapse;
-            background: var(--gray);
+        /* Modal */
+        .modal {
+            display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); flex-direction: column; align-items: center; justify-content: center;
         }
+        .modal img { max-width: 90%; max-height: 80%; border: 1px solid var(--border); }
+        #modal-caption { color: #888; margin-top: 20px; font-size: 0.9rem; text-align: center; max-width: 80%; }
 
-        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); }
+        .gallery-item img { cursor: zoom-in; }
 
-        .cta {
-            text-align: center;
-            margin: 80px 0 40px;
-            padding: 60px 20px;
-            background: var(--gray);
-            border: 1px solid var(--border);
-        }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--gray); }
+        th, td { padding: 12px; border: 1px solid var(--border); text-align: left; }
+        th { text-transform: uppercase; font-size: 0.7rem; color: var(--highlight); }
 
-        .email-link { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
-
-        footer { text-align: center; padding: 40px; font-size: 0.8rem; color: #555; border-top: 1px solid var(--border); }
+        footer { text-align: center; padding: 60px 0; border-top: 1px solid var(--border); }
+        .fact-footer { color: #555; font-size: 0.75rem; max-width: 800px; margin: 0 auto 40px; line-height: 1.4; }
     </style>
 </head>
 <body>
@@ -175,63 +116,52 @@
 <div class="container">
     <header>
         <h1>PolyFilm Ortho20</h1>
-        <p class="tagline">Крафтова ортохроматична емульсія (120 тип)</p>
+        <p class="tagline">Перша українська крафтова плівка</p>
     </header>
 
-    <div class="description-text" style="text-align: left; max-width: 850px; margin: 0 auto;">
-        <p>Ми відновили автентичні технології кінця XIX століття, адаптувавши їх до сучасних стандартів безпеки. <strong>PolyFilm Ortho20</strong> — це перша українська крафтова плівка, створена з нуля.</p>
+    <div class="manifesto-quote">
+        Крафтова фотографічна емульсія — це живий організм. Від моменту змішування нітрату срібла до моменту, коли вона зустрічає світло у вашій камері, вона дихає, змінюється та формує свій унікальний характер.
+    </div>
 
-        <div style="font-size: 0.9rem; color: #bbb; border-left: 2px solid var(--border); padding-left: 20px; margin: 30px 0;">
-            <p style="margin-bottom: 10px; color: var(--accent); font-weight: bold;">Натхнення та традиції:</p>
-            <p>Наш шлях базується на досвіді піонерів: від <strong>Річарда Меддокса</strong> (винахідника желатиносрібного процесу) до сучасних наставників, як <strong>Рон Моурі</strong> та <strong>Марк Остман</strong>. Продовжуємо справу <strong>Т. Торна Бейкера</strong> та <strong>Йозефа Марії Едера</strong>, повертаючи магію ручного поливу в цифрову епоху.</p>
-        </div>
-
-        <p style="font-style: italic; color: #aaa; margin-bottom: 20px;">
-            Використовуємо срібло, відновлене з відпрацьованого фіксажу, даруючи металу нове життя у вашому кадрі.
+    <div class="description-text">
+        <p>Кожна партія виготовляється вручну з акцентом на високу щільність срібла та класичний тональний діапазон. Ми відродили ремесло емульсійного варіння, натхненне піонерами фотографії: <strong>Р. Меддоксом</strong>, <strong>Т. Торном Бейкером</strong>, <strong>Р. Моурі</strong> та <strong>М. Остманом</strong>.</p>
+        <p style="color: #888; font-size: 0.9rem;">
+            *Ми використовуємо нетоксичні реактиви та відновлене срібло. Частина желатину (10-20%) замінена на синтетичні полімери для підвищення стабільності шару.
         </p>
-
-        <p>Це "свіжа" ортохроматична емульсія, що потребує дбайливого ставлення та глибокого розуміння природи світла.</p>
     </div>
 
     <div class="specs">
         <div class="spec-item"><b>Чутливість</b>ISO 20 / 14° DIN</div>
-        <div class="spec-item"><b>Спектр</b>Ортохроматична</div>
-        <div class="spec-item"><b>Освітлення</b>Денне (пріоритет)</div>
-        <div class="spec-item"><b>Тип</b>Середній формат</div>
+        <div class="spec-item"><b>Спектр</b>Орто (до 580 нм)</div>
+        <div class="spec-item"><b>Світло</b>Dark Red Safe</div>
+        <div class="spec-item"><b>Тип</b>120 (Manual Wrap)</div>
+    </div>
+
+    <div class="info-grid">
+        <div class="info-card">
+            <h3>Зберігання та Термін</h3>
+            <p>Зберігати у сухому темному місці. Офіційний термін придатності — 6 місяців. Пам'ятайте: можливий "дозрівання" (ріст ISO на 0.5-1 стоп) з часом.</p>
+        </div>
+        <div class="info-card">
+            <h3>Робота з шаром</h3>
+            <p>Крафтова емульсія сохне довше. Слід бути гранично обережним із мокрим шаром. Рекомендована природна сушка: 2-3 години після промивання.</p>
+        </div>
+        <div class="info-card">
+            <h3>Ручна намотка</h3>
+            <p>Через особливості ручної роботи рулон може бути трохи товстішим ("fat roll"). Заряджайте та витягуйте плівку в тіні, надійно фіксуючи автозаклейку.</p>
+        </div>
     </div>
 
     <div class="warning-box">
-        <strong>Особливості експонування:</strong> Оскільки емульсія ортохроматична, вона найкраще працює при природному денному світлі. При штучному "теплому" освітленні (лампи розжарювання) її чутливість падає у 2–3 рази. <br><br>
-        <em>Важливо: Не використовуйте червоні або помаранчеві світлофільтри!</em>
+        <strong>Порада для профі:</strong> Завдяки нечутливості до темно-червоного світла, ви можете заправляти плівку в спіраль та навіть контролювати процес проявки візуально. Це відкриває нові можливості для зонної системи.
     </div>
 
-    <section class="video-section">
-        <h3>Відеоогляд та результати</h3>
-        <div class="video-container">
-            <a href="https://youtu.be/F6Bg9MQVi4A?si=3B_oFIFLcUd1vjx2" target="_blank" style="display:block; position:relative;">
-                <img src="https://img.youtube.com/vi/F6Bg9MQVi4A/maxresdefault.jpg" alt="Прев'ю відео">
-                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:60px; height:60px; border:2px solid #fff; border-radius:50%; background:rgba(0,0,0,0.3);"></div>
-            </a>
-        </div>
-    </section>
-
-    <section>
-        <h3 style="text-align: center; margin-bottom: 30px;">Тестові кадри</h3>
-        <div class="gallery">
-            <div class="gallery-item"><img src="img/test1.jpg" alt="EI18 Rodinal 1+50 15min"></div>
-            <div class="gallery-item"><img src="img/test2.jpg" alt="EI18 Rodinal 1+50 15min"></div>
-            <div class="gallery-item"><img src="img/test3.jpg" alt="EI16 Rodinal 1+25 18min"></div>
-            <div class="gallery-item"><img src="img/test4.jpg" alt="EI16 Rodinal 1+25 18min"></div>
-        </div>
-    </section>
-
     <section style="margin: 60px 0;">
-        <h3 style="text-align: center; margin-bottom: 20px;">Рекомендації з проявки</h3>
+        <h3 style="text-align: center; text-transform: uppercase; letter-spacing: 2px;">Рекомендації з проявки</h3>
         <p style="text-align: center; font-size: 0.9rem; color: #aaa; margin-bottom: 20px;">
-            Температура проявника: <strong>бажано 18°C</strong> (не вище 20°C). <br>
-            Оскільки шар емульсії свіжий, він потребує обережного поводження під час мокрих процесів.
+            Температура розчинів: <strong>18-19°C</strong>. <br>
+            Агітація: перша хвилина постійно, далі 10 сек. щохвилини.
         </p>
-
         <table>
             <thead>
                 <tr>
@@ -243,37 +173,62 @@
             <tbody>
                 <tr>
                     <td>Rodinal (Adonal)</td>
-                    <td>1:25</td>
-                    <td style="text-align: right; font-weight: bold;">14 – 18 хв</td>
+                    <td>1+25</td>
+                    <td style="text-align: right; font-weight: bold;">15 – 20 хв</td>
                 </tr>
                 <tr>
                     <td>Kodak HC-110</td>
                     <td>Dilution B (1+31)</td>
-                    <td style="text-align: right; font-weight: bold;">15 – 18 хв</td>
+                    <td style="text-align: right; font-weight: bold;">13 – 18 хв</td>
                 </tr>
             </tbody>
         </table>
-        <p style="text-align: center; font-size: 0.8rem; color: #666; margin-top: 15px;">
-            * Час є орієнтовним. Рекомендуємо шукати власний баланс залежно від звичного стилю роботи.
-        </p>
     </section>
 
-    <div class="cta">
-        <h2>Beta Testing Phase</h2>
-        <p>Крафтове виробництво. Відроджуємо ремесло разом.</p>
-        <p><a href="https://filmly.co.ua/" class="email-link">Ми у Fediverse</a></p>
+    <section>
+        <h3 style="text-align: center; text-transform: uppercase;">Тестові кадри</h3>
+        <div class="gallery">
+            <div class="gallery-item"><img src="img/test1.jpg" alt="Batch 260301 | Rolleiflex | ISO 18"></div>
+            <div class="gallery-item"><img src="img/test2.jpg" alt="Batch 260301 | Rolleiflex | ISO 18"></div>
+            <div class="gallery-item"><img src="img/test3.jpg" alt="Batch 260301 | RB67 | ISO 16"></div>
+            <div class="gallery-item"><img src="img/test4.jpg" alt="Batch 260301 | RB67 | ISO 16"></div>
+        </div>
+    </section>
+
+    <div style="text-align: center; margin: 60px 0;">
+        <h3>Станьте частиною дослідження</h3>
+        <p>Ми збираємо відгуки для вдосконалення рецептури. Кожен ваш кадр допомагає проекту.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMDPyZSOiO6kHvbb6dvB592Hl8D_6nDmDZChDO9m91unzddg/viewform" class="btn" target="_blank">Стати тестером</a>
     </div>
 
-    <footer style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-        <div class="made-in-ua">
-            <img src="img/made-in-ukraine.png" alt="Зроблено в Україні" style="height: 50px; width: auto; filter: brightness(0.9);">
-        </div>
+    <h3 style="text-align: center; text-transform: uppercase; letter-spacing: 2px;">Лог Партій (Batch Log)</h3>
+    <table class="batch-log">
+        <thead>
+            <tr>
+                <th>Batch #</th>
+                <th>Характер партії</th>
+                <th>Примітки</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>260301</td>
+                <td>Класична / Тональна</td>
+                <td>М'які переходи, ідеальна для портретів при денному світлі.</td>
+            </tr>
+        </tbody>
+    </table>
 
-        <div style="text-align: center;">
-            <p>&copy; 2026 PolyFilms Project.</p>
+    <footer>
+        <div class="fact-footer">
+            <strong>Цікаві факти:</strong><br>
+            • У кожному кадрі працюють мільярди нано-кристалів, що перетворюють світло на срібну історію. <br>
+            • Цифрові файли зникають, але срібло на плівці зберігає зображення понад 150 років — найнадійніший архів після глиняних таблиць. <br>
+            • Напівпровідники та чіпи у вашому смартфоні ніколи б не з'явилися без технологій фоточутливості срібних галоїдів.
         </div>
+        <img src="img/made-in-ukraine.png" alt="Зроблено в Україні" style="height: 45px; margin-bottom: 20px;">
+        <p>&copy; 2026 PolyFilms Project. Crafted with Silver and Passion.</p>
     </footer>
-
 </div>
 
 <div id="modal" class="modal" onclick="this.classList.remove('active')">
@@ -282,23 +237,29 @@
 </div>
 
 <script>
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modal-img');
-    const modalCaption = document.getElementById('modal-caption');
+    window.onload = function() {
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalCaption = document.getElementById('modal-caption');
 
-    document.querySelectorAll('.gallery-item img').forEach(image => {
-        image.style.cursor = 'zoom-in';
-        image.onclick = function() {
-            modal.classList.add('active');
-            modalImg.src = this.src;
-            modalCaption.innerText = this.alt;
-        };
-    });
+        document.querySelectorAll('.gallery-item img').forEach(image => {
+            image.addEventListener('click', function() {
+                modal.style.display = "flex";
+                modalImg.src = this.src;
+                modalCaption.innerText = this.alt;
+            });
+        });
 
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') modal.classList.remove('active');
-    });
+        modal.addEventListener('click', function() {
+            this.style.display = "none";
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') modal.style.display = "none";
+        });
+    };
 </script>
+
 
 </body>
 </html>
