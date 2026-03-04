@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PolyFilm Ortho20 | Крафтова українська емульсія</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap" rel="stylesheet">
+
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
     <style>
@@ -14,6 +18,10 @@
             --gray: #1a1a1a;
             --border: #333;
             --highlight: #d4af37; /* Silver/Gold tone */
+            /* Нові кольори з ваших скріншотів */
+            --header-accent: #9edae5; /* Світло-блакитний для заголовка */
+            --tip-accent: #3498db;    /* Яскраво-блакитний для поради */
+            --tip-bg: #000000;       /* Чорний фон для поради */
         }
 
         body {
@@ -25,9 +33,33 @@
         }
 
         .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-        header { text-align: center; padding: 80px 0 40px; }
-        h1 { font-size: 3rem; letter-spacing: 0.3rem; text-transform: uppercase; margin: 0; font-weight: 300; }
-        .tagline { color: #888; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
+
+        /* СТИЛІЗАЦІЯ ЗАГОЛОВКА ЗГІДНО СКРІНШОТУ */
+        header {
+            text-align: center;
+            padding: 80px 0 20px; /* Трохи зменшив нижній відступ */
+        }
+        h1 {
+            font-family: 'Oswald', sans-serif; /* Шрифт зі скріншоту */
+            font-size: 3.5rem; /* Трохи збільшив розмір */
+            letter-spacing: 0.4rem; /* Збільшив міжлітерний відступ */
+            text-transform: uppercase;
+            margin: 0;
+            font-weight: 300; /* Тонке накреслення */
+            color: var(--accent); /* Основний колір білий */
+        }
+        /* Колір для другої частини заголовка */
+        h1 span.ortho {
+            color: var(--header-accent);
+        }
+
+        .tagline {
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-top: 10px; /* Додав відступ зверху */
+        }
 
         /* Quote Block */
         .manifesto-quote {
@@ -61,16 +93,20 @@
         .info-card { background: var(--gray); padding: 25px; border: 1px solid var(--border); }
         .info-card h3 { margin-top: 0; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; color: var(--highlight); }
 
-        /* Batch Log Table */
         .batch-log { width: 100%; border-collapse: collapse; margin: 40px 0; font-size: 0.9rem; }
         .batch-log th, .batch-log td { padding: 12px; border: 1px solid var(--border); text-align: left; }
         .batch-log th { background: #111; text-transform: uppercase; font-size: 0.7rem; }
 
         .warning-box {
-            background: rgba(205, 0, 0, 0.08);
-            border-left: 4px solid #800;
-            padding: 25px;
+            background: var(--tip-bg);
+            border-left: 3px solid var(--tip-accent);
+            padding: 30px;
             margin: 40px 0;
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+        .warning-box strong {
+            color: #eee;
         }
 
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 40px 0; }
@@ -93,7 +129,6 @@
         }
         .btn:hover { background: #ccc; transform: translateY(-2px); }
 
-        /* Modal */
         .modal {
             display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.95); flex-direction: column; align-items: center; justify-content: center;
@@ -115,7 +150,7 @@
 
 <div class="container">
     <header>
-        <h1>PolyFilm Ortho20</h1>
+        <h1><span class="ortho">Poly</span>Film Ortho20</h1>
         <p class="tagline">Перша українська крафтова плівка</p>
     </header>
 
@@ -123,12 +158,15 @@
         Крафтова фотографічна емульсія — це живий організм. Від моменту змішування нітрату срібла до моменту, коли вона зустрічає світло у вашій камері, вона дихає, змінюється та формує свій унікальний характер.
     </div>
 
-    <div class="description-text">
-        <p>Кожна партія виготовляється вручну з акцентом на високу щільність срібла та класичний тональний діапазон. Ми відродили ремесло емульсійного варіння, натхненне піонерами фотографії: <strong>Р. Меддоксом</strong>, <strong>Т. Торном Бейкером</strong>, <strong>Р. Моурі</strong> та <strong>М. Остманом</strong>.</p>
-        <p style="color: #888; font-size: 0.9rem;">
-            *Ми використовуємо нетоксичні реактиви та відновлене срібло. Частина желатину (10-20%) замінена на синтетичні полімери для підвищення стабільності шару.
-        </p>
-    </div>
+    <section>
+        <h3 style="text-align: center; text-transform: uppercase;">Тестові кадри</h3>
+        <div class="gallery">
+            <div class="gallery-item"><img src="img/test1.jpg" alt="Batch 260301 | Rolleiflex | ISO 18"></div>
+            <div class="gallery-item"><img src="img/test2.jpg" alt="Batch 260301 | Rolleiflex | ISO 18"></div>
+            <div class="gallery-item"><img src="img/test3.jpg" alt="Batch 260301 | RB67 | ISO 16"></div>
+            <div class="gallery-item"><img src="img/test4.jpg" alt="Batch 260301 | RB67 | ISO 16"></div>
+        </div>
+    </section>
 
     <div class="specs">
         <div class="spec-item"><b>Чутливість</b>ISO 20 / 14° DIN</div>
@@ -154,6 +192,13 @@
 
     <div class="warning-box">
         <strong>Порада для профі:</strong> Завдяки нечутливості до темно-червоного світла, ви можете заправляти плівку в спіраль та навіть контролювати процес проявки візуально. Це відкриває нові можливості для зонної системи.
+    </div>
+
+    <div class="description-text">
+        <p>Кожна партія виготовляється вручну з акцентом на високу щільність срібла та класичний тональний діапазон. Ми відродили ремесло емульсійного варіння, натхненне піонерами фотографії: <strong>Р. Меддоксом</strong>, <strong>Т. Торном Бейкером</strong>, <strong>Р. Моурі</strong> та <strong>М. Остманом</strong>.</p>
+        <p style="color: #888; font-size: 0.9rem;">
+            *Ми використовуємо нетоксичні реактиви та відновлене срібло. Частина желатину (10-20%) замінена на синтетичні полімери для підвищення стабільності шару.
+        </p>
     </div>
 
     <section style="margin: 60px 0;">
@@ -185,19 +230,9 @@
         </table>
     </section>
 
-    <section>
-        <h3 style="text-align: center; text-transform: uppercase;">Тестові кадри</h3>
-        <div class="gallery">
-            <div class="gallery-item"><img src="img/test1.jpg" alt="Batch 260301 | Rolleiflex | ISO 18"></div>
-            <div class="gallery-item"><img src="img/test2.jpg" alt="Batch 260301 | Rolleiflex | ISO 18"></div>
-            <div class="gallery-item"><img src="img/test3.jpg" alt="Batch 260301 | RB67 | ISO 16"></div>
-            <div class="gallery-item"><img src="img/test4.jpg" alt="Batch 260301 | RB67 | ISO 16"></div>
-        </div>
-    </section>
-
     <div style="text-align: center; margin: 60px 0;">
         <h3>Станьте частиною дослідження</h3>
-        <p>Ми збираємо відгуки для вдосконалення рецептури. Кожен ваш кадр допомагає проекту.</p>
+        <p>Ми збираємо відгуки для вдосконалення рецептури. Кожен ваш кадр допомагає проєкту.</p>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMDPyZSOiO6kHvbb6dvB592Hl8D_6nDmDZChDO9m91unzddg/viewform" class="btn" target="_blank">Стати тестером</a>
     </div>
 
@@ -219,6 +254,19 @@
         </tbody>
     </table>
 
+
+<section style="margin: 60px 0; text-align: center;">
+        <h3 style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: #888; margin-bottom: 30px;">Наші партнери</h3>
+        <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+            <a href="https://www.instagram.com/filmservice.ua/" target="_blank" style="color: var(--text); text-decoration: none; font-weight: 300; letter-spacing: 1px; transition: 0.3s;">
+                FILMSERVICE.UA
+            </a>
+            <a href="https://www.instagram.com/uaf.gallery/" target="_blank" style="color: var(--text); text-decoration: none; font-weight: 300; letter-spacing: 1px; transition: 0.3s;">
+                UAF.GALLERY
+            </a>
+        </div>
+    </section>
+
     <footer>
         <div class="fact-footer">
             <strong>Цікаві факти:</strong><br>
@@ -229,6 +277,7 @@
         <img src="img/made-in-ukraine.png" alt="Зроблено в Україні" style="height: 45px; margin-bottom: 20px;">
         <p>&copy; 2026 PolyFilms Project. Crafted with Silver and Passion.</p>
     </footer>
+
 </div>
 
 <div id="modal" class="modal" onclick="this.classList.remove('active')">
