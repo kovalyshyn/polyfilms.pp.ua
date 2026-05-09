@@ -344,6 +344,120 @@
 </div>
 
 <script>
+(function () {
+  const SUPPORTED = ["uk", "en"];
+  const DEFAULT_LANG = "uk";
+
+  function detectLang() {
+    const stored = localStorage.getItem("polyfilms.lang");
+    if (stored && SUPPORTED.includes(stored)) return stored;
+    const nav = (navigator.language || "").toLowerCase();
+    if (nav.startsWith("en")) return "en";
+    return DEFAULT_LANG;
+  }
+
+  function pickLocalized(value, lang) {
+    if (value && typeof value === "object" && "uk" in value) {
+      return value[lang] || value.uk || "";
+    }
+    return value || "";
+  }
+
+  function applyStrings(strings, lang) {
+    const dict = strings[lang] || {};
+    const fallback = strings.uk || {};
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      const value = dict[key] || fallback[key];
+      if (value == null) return;
+      if (el.hasAttribute("data-i18n-html")) {
+        el.innerHTML = value;
+      } else if (el.tagName === "TITLE") {
+        document.title = value;
+      } else {
+        el.textContent = value;
+      }
+    });
+    // toggle aria-current on language buttons
+    document.querySelectorAll("[data-lang-set]").forEach((btn) => {
+      btn.setAttribute(
+        "aria-current",
+        btn.getAttribute("data-lang-set") === lang ? "true" : "false",
+      );
+    });
+  }
+
+  function renderGallery(items, lang) {
+    const container = document.getElementById("gallery-container");
+    if (!container) return;
+    container.removeAttribute("data-fallback");
+    container.innerHTML = items
+      .map((it) => {
+        const alt = pickLocalized(it.alt, lang).replace(/"/g, "&quot;");
+        const file = (it.file || "").replace(/"/g, "&quot;");
+        return `<div class="gallery-item"><img src="${file}" alt="${alt}"></div>`;
+      })
+      .join("");
+  }
+
+  function renderBatches(items, lang) {
+    const tbody = document.getElementById("batches-tbody");
+    if (!tbody) return;
+    tbody.removeAttribute("data-fallback");
+    tbody.innerHTML = items
+      .map((b) => {
+        const num = String(b.number || "");
+        const ch = pickLocalized(b.character, lang);
+        const nt = pickLocalized(b.notes, lang);
+        return `<tr><td>${num}</td><td>${ch}</td><td>${nt}</td></tr>`;
+      })
+      .join("");
+  }
+
+  async function loadJSON(path) {
+    const res = await fetch(path, { cache: "no-cache" });
+    if (!res.ok) throw new Error(`${path}: ${res.status}`);
+    return res.json();
+  }
+
+  async function boot() {
+    let strings, gallery, batches;
+    try {
+      [strings, gallery, batches] = await Promise.all([
+        loadJSON("i18n/strings.json"),
+        loadJSON("data/gallery.json"),
+        loadJSON("data/batches.json"),
+      ]);
+    } catch (err) {
+      console.warn("i18n/data fetch failed; keeping HTML fallback:", err);
+      return;
+    }
+
+    let currentLang = detectLang();
+    applyStrings(strings, currentLang);
+    renderGallery(gallery.items || [], currentLang);
+    renderBatches(batches.items || [], currentLang);
+    // notify modal init that gallery items were re-rendered
+    document.dispatchEvent(new Event("gallery:rendered"));
+
+    document.querySelectorAll("[data-lang-set]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        currentLang = btn.getAttribute("data-lang-set");
+        localStorage.setItem("polyfilms.lang", currentLang);
+        applyStrings(strings, currentLang);
+        renderGallery(gallery.items || [], currentLang);
+        renderBatches(batches.items || [], currentLang);
+        document.dispatchEvent(new Event("gallery:rendered"));
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", boot);
+})();
+</script>
+
+<script>
     window.onload = function() {
         const modal = document.getElementById('modal');
         const modalImg = document.getElementById('modal-img');
@@ -352,8 +466,15 @@
         const nextBtn = document.getElementById('modal-next');
         const closeBtn = document.getElementById('modal-close');
 
-        const images = Array.from(document.querySelectorAll('.gallery-item img'));
+        let images = [];
         let currentIndex = 0;
+
+        function bindImages() {
+            images = Array.from(document.querySelectorAll('.gallery-item img'));
+            images.forEach((img, i) => {
+                img.onclick = () => openModal(i);
+            });
+        }
 
         function openModal(index) {
             currentIndex = (index + images.length) % images.length;
@@ -362,7 +483,8 @@
             modalCaption.innerText = images[currentIndex].alt;
         }
 
-        images.forEach((img, i) => img.addEventListener('click', () => openModal(i)));
+        bindImages();
+        document.addEventListener('gallery:rendered', bindImages);
 
         prevBtn.addEventListener('click', (e) => { e.stopPropagation(); openModal(currentIndex - 1); });
         nextBtn.addEventListener('click', (e) => { e.stopPropagation(); openModal(currentIndex + 1); });
