@@ -1,0 +1,70 @@
+# Pages CMS configuration — https://pagescms.org/docs/configuration/
+media:
+  input: img
+  output: /img
+
+content:
+  - name: batches
+    label: Партії (Batch Log)
+    type: file
+    path: data/batches.json
+    format: json
+    fields:
+      - name: items
+        label: Партії
+        type: object
+        list: true
+        fields:
+          - name: number
+            label: Номер партії
+            type: string
+            required: true
+            description: 'Наприклад: 260410'
+          - name: character
+            label: Характер
+            type: object
+            fields:
+              - name: uk
+                label: Характер UA
+                type: string
+                required: true
+              - name: en
+                label: Character EN
+                type: string
+          - name: notes
+            label: Примітки
+            type: object
+            fields:
+              - name: uk
+                label: Примітки UA
+                type: text
+              - name: en
+                label: Notes EN
+                type: text
+
+  - name: gallery
+    label: Галерея (Test Frames)
+    type: file
+    path: data/gallery.json
+    format: json
+    fields:
+      - name: items
+        label: Світлини
+        type: object
+        list: true
+        fields:
+          - name: file
+            label: Файл (квадратне фото, до 2 МБ)
+            type: image
+            required: true
+          - name: alt
+            label: Підпис (камера, ISO)
+            type: object
+            fields:
+              - name: uk
+                label: Підпис UA
+                type: string
+                required: true
+              - name: en
+                label: Caption EN
+                type: string
