@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" data-default-lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PolyFilm Ortho20 | Крафтова українська емульсія</title>
+    <title data-i18n="page_title">PolyFilm Ortho20 | Крафтова українська емульсія</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&display=swap" rel="stylesheet">
@@ -180,6 +180,16 @@
         th, td { padding: 12px; border: 1px solid var(--border); text-align: left; }
         th { text-transform: uppercase; font-size: 0.7rem; color: var(--highlight); }
 
+        .lang-toggle { display: flex; gap: 4px; justify-content: center; margin-bottom: 24px; }
+        .lang-toggle button {
+            background: none; border: none; color: #888;
+            font-family: 'Oswald', sans-serif; font-size: 0.85rem;
+            letter-spacing: 2px; cursor: pointer; padding: 4px 8px;
+        }
+        .lang-toggle button[aria-current="true"] { color: var(--accent); }
+        .lang-toggle button:hover { color: var(--accent); }
+        .lang-toggle-sep { color: #555; align-self: center; font-size: 0.85rem; }
+
         footer { text-align: center; padding: 60px 0; border-top: 1px solid var(--border); }
         .fact-footer { color: #555; font-size: 0.75rem; max-width: 800px; margin: 0 auto 40px; line-height: 1.4; }
     </style>
@@ -188,74 +198,72 @@
 
 <div class="container">
     <header>
+        <div class="lang-toggle">
+            <button type="button" data-lang-set="uk" data-i18n="lang_toggle_uk">UA</button>
+            <span class="lang-toggle-sep">/</span>
+            <button type="button" data-lang-set="en" data-i18n="lang_toggle_en">EN</button>
+        </div>
         <h1><span class="ortho">Poly</span>Film Ortho</h1>
-        <p class="tagline">Перша українська крафтова плівка</p>
+        <p class="tagline" data-i18n="tagline">Перша українська крафтова плівка</p>
     </header>
 
-    <div class="manifesto-quote">
+    <div class="manifesto-quote" data-i18n="manifesto">
         Крафтова фотографічна емульсія — це живий організм. Від моменту змішування нітрату срібла до моменту, коли вона зустрічає світло у вашій камері, вона дихає, змінюється та формує свій унікальний характер.
     </div>
 
     <section>
-        <h3 style="text-align: center; text-transform: uppercase;">Тестові кадри</h3>
-        <div class="gallery">
+        <h3 style="text-align: center; text-transform: uppercase;" data-i18n="section_tests">Тестові кадри</h3>
+        <div class="gallery" id="gallery-container" data-fallback>
+            <!-- No-JS fallback: shows first 3 items hardcoded so the page is never empty -->
             <div class="gallery-item"><img src="img/test1.jpg" alt="Batch 260301 | Baldaxette I | ISO 18"></div>
             <div class="gallery-item"><img src="img/test2.jpg" alt="Batch 260301 | Rolleiflex | ISO 18"></div>
             <div class="gallery-item"><img src="img/test3.jpg" alt="Batch 260301 | RB67 | ISO 16"></div>
-            <div class="gallery-item"><img src="img/test4.jpg" alt="Batch 260301 | RB67 | ISO 16"></div>
-            <div class="gallery-item"><img src="img/test5.jpg" alt="Batch 260301 | Baldaxette I | ISO 18"></div>
-            <div class="gallery-item"><img src="img/test6.jpg" alt="Batch 260321 | ISO 20"></div>
-            <div class="gallery-item"><img src="img/test7.jpg" alt="Batch 260321 | Baldaxette I | ISO 20"></div>
-            <div class="gallery-item"><img src="img/test8.jpg" alt="Batch 260321 | ISO 20"></div>
-            <div class="gallery-item"><img src="img/test9.jpg" alt="Batch 260321 | Yashica Mat-EM | ISO 20"></div>
         </div>
     </section>
 
     <div class="specs">
-        <div class="spec-item"><b>Чутливість</b>ISO 20 / 14° DIN</div>
-        <div class="spec-item"><b>Спектр</b>Орто (до 580 нм)</div>
-        <div class="spec-item"><b>Світло</b>Dark Red Safe</div>
-        <div class="spec-item"><b>Тип</b>120 (Manual Wrap)</div>
+        <div class="spec-item"><b data-i18n="spec_sensitivity_label">Чутливість</b><span data-i18n="spec_sensitivity_value">ISO 20 / 14° DIN</span></div>
+        <div class="spec-item"><b data-i18n="spec_spectrum_label">Спектр</b><span data-i18n="spec_spectrum_value">Орто (до 580 нм)</span></div>
+        <div class="spec-item"><b data-i18n="spec_safelight_label">Світло</b><span data-i18n="spec_safelight_value">Dark Red Safe</span></div>
+        <div class="spec-item"><b data-i18n="spec_format_label">Тип</b><span data-i18n="spec_format_value">120 (Manual Wrap)</span></div>
     </div>
 
     <div class="info-grid">
         <div class="info-card">
-            <h3>Зберігання та Термін</h3>
-            <p>Зберігати у сухому темному місці. Офіційний термін придатності — 6 місяців. Пам'ятайте: можливий "дозрівання" (ріст ISO на 0.5-1 стоп) з часом.</p>
+            <h3 data-i18n="card_storage_title">Зберігання та Термін</h3>
+            <p data-i18n="card_storage_body">Зберігати у сухому темному місці. Офіційний термін придатності — 6 місяців. Пам'ятайте: можливий "дозрівання" (ріст ISO на 0.5-1 стоп) з часом.</p>
         </div>
         <div class="info-card">
-            <h3>Робота з шаром</h3>
-            <p>Крафтова емульсія сохне довше. Слід бути гранично обережним із мокрим шаром. Рекомендована природна сушка: 2-3 години після промивання.</p>
+            <h3 data-i18n="card_emulsion_title">Робота з шаром</h3>
+            <p data-i18n="card_emulsion_body">Крафтова емульсія сохне довше. Слід бути гранично обережним із мокрим шаром. Рекомендована природна сушка: 2-3 години після промивання.</p>
         </div>
         <div class="info-card">
-            <h3>Ручна намотка</h3>
-            <p>Через особливості ручної роботи рулон може бути трохи товстішим ("fat roll"). Заряджайте та витягуйте плівку в тіні, надійно фіксуючи автозаклейку.</p>
+            <h3 data-i18n="card_winding_title">Ручна намотка</h3>
+            <p data-i18n="card_winding_body">Через особливості ручної роботи рулон може бути трохи товстішим ("fat roll"). Заряджайте та витягуйте плівку в тіні, надійно фіксуючи автозаклейку.</p>
         </div>
     </div>
 
     <div class="warning-box">
-        <strong>Порада для профі:</strong> Завдяки нечутливості до темно-червоного світла, ви можете заправляти плівку в спіраль та навіть контролювати процес проявки візуально. Це відкриває нові можливості для зонної системи.
+        <strong data-i18n="tip_strong">Порада для профі:</strong> <span data-i18n="tip_body">Завдяки нечутливості до темно-червоного світла, ви можете заправляти плівку в спіраль та навіть контролювати процес проявки візуально. Це відкриває нові можливості для зонної системи.</span>
     </div>
 
     <div class="description-text">
-        <p>Кожна партія виготовляється вручну з акцентом на високу щільність срібла та класичний тональний діапазон. Ми відродили ремесло емульсійного варіння, натхненне піонерами фотографії: <strong>Р. Меддоксом</strong>, <strong>Т. Торном Бейкером</strong>, <strong>Р. Моурі</strong> та <strong>М. Остманом</strong>.</p>
-        <p style="color: #888; font-size: 0.9rem;">
-            *Ми використовуємо нетоксичні реактиви та відновлене срібло. Частина желатину (10-20%) замінена на синтетичні полімери для підвищення стабільності шару.
-        </p>
+        <p data-i18n="desc_main" data-i18n-html="true">Кожна партія виготовляється вручну з акцентом на високу щільність срібла та класичний тональний діапазон. Ми відродили ремесло емульсійного варіння, натхненне піонерами фотографії: <strong>Р. Меддоксом</strong>, <strong>Т. Торном Бейкером</strong>, <strong>Р. Моурі</strong> та <strong>М. Остманом</strong>.</p>
+        <p style="color: #888; font-size: 0.9rem;" data-i18n="desc_footnote">*Ми використовуємо нетоксичні реактиви та відновлене срібло. Частина желатину (10-20%) замінена на синтетичні полімери для підвищення стабільності шару.</p>
     </div>
 
     <section style="margin: 60px 0;">
-        <h3 style="text-align: center; text-transform: uppercase; letter-spacing: 2px;">Рекомендації з проявки</h3>
-        <p style="text-align: center; font-size: 0.9rem; color: #aaa; margin-bottom: 20px;">
+        <h3 style="text-align: center; text-transform: uppercase; letter-spacing: 2px;" data-i18n="section_dev">Рекомендації з проявки</h3>
+        <p style="text-align: center; font-size: 0.9rem; color: #aaa; margin-bottom: 20px;" data-i18n="dev_intro" data-i18n-html="true">
             Температура розчинів: <strong>18-19°C</strong>. <br>
             Агітація: перша хвилина постійно, далі 10 сек. щохвилини.
         </p>
         <table>
             <thead>
                 <tr>
-                    <th>Проявник</th>
-                    <th>Розведення</th>
-                    <th style="text-align: right;">Час</th>
+                    <th data-i18n="dev_th_developer">Проявник</th>
+                    <th data-i18n="dev_th_dilution">Розведення</th>
+                    <th style="text-align: right;" data-i18n="dev_th_time">Час</th>
                 </tr>
             </thead>
             <tbody>
@@ -274,42 +282,38 @@
     </section>
 
     <div style="text-align: center; margin: 60px 0;">
-        <h3>Станьте частиною дослідження</h3>
-        <p>Ми збираємо відгуки для вдосконалення рецептури. Кожен ваш кадр допомагає проєкту.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMDPyZSOiO6kHvbb6dvB592Hl8D_6nDmDZChDO9m91unzddg/viewform" class="btn" target="_blank">Стати тестером</a>
+        <h3 data-i18n="section_join_title">Станьте частиною дослідження</h3>
+        <p data-i18n="section_join_body">Ми збираємо відгуки для вдосконалення рецептури. Кожен ваш кадр допомагає проєкту.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdMDPyZSOiO6kHvbb6dvB592Hl8D_6nDmDZChDO9m91unzddg/viewform" class="btn" target="_blank" data-i18n="cta_subscribe">Стати тестером</a>
     </div>
 
-    <h3 style="text-align: center; text-transform: uppercase; letter-spacing: 2px;">Лог Партій (Batch Log)</h3>
+    <h3 style="text-align: center; text-transform: uppercase; letter-spacing: 2px;" data-i18n="section_batches">Лог Партій (Batch Log)</h3>
     <table class="batch-log">
         <thead>
             <tr>
-                <th>Batch #</th>
-                <th>Характер партії</th>
-                <th>Примітки</th>
+                <th data-i18n="batches_th_number">Batch #</th>
+                <th data-i18n="batches_th_character">Характер партії</th>
+                <th data-i18n="batches_th_notes">Примітки</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="batches-tbody" data-fallback>
+            <!-- No-JS fallback: most recent 2 batches hardcoded -->
             <tr>
-                <td>260301</td>
-                <td>Класична / Тональна</td>
-                <td>М'які переходи, ідеальна для портретів при денному світлі.</td>
+                <td>260410</td>
+                <td>Більше срібла</td>
+                <td>ISO 25-30 та більше срібла.</td>
             </tr>
             <tr>
                 <td>260321</td>
                 <td>Стабілізаці / Температура</td>
                 <td>Чесні ISO20 та можна проявляти у 20C.</td>
             </tr>
-            <tr>
-                <td>260410</td>
-                <td>Більше срібла</td>
-                <td>ISO 25-30 та більше срібла.</td>
-            </tr>
         </tbody>
     </table>
 
 
 <section style="margin: 60px 0; text-align: center;">
-        <h3 style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: #888; margin-bottom: 30px;">Наші партнери</h3>
+        <h3 style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: #888; margin-bottom: 30px;" data-i18n="section_partners">Наші партнери</h3>
         <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
             <a href="https://www.instagram.com/uaf.gallery/" target="_blank" style="color: var(--text); text-decoration: none; font-weight: 300; letter-spacing: 1px; transition: 0.3s;">
                 UAF
@@ -322,13 +326,11 @@
 
     <footer>
         <div class="fact-footer">
-            <strong>Цікаві факти:</strong><br>
-            • У кожному кадрі працюють мільярди нано-кристалів, що перетворюють світло на срібну історію. <br>
-            • Цифрові файли зникають, але срібло на плівці зберігає зображення понад 150 років — найнадійніший архів після глиняних таблиць. <br>
-            • Напівпровідники та чіпи у вашому смартфоні ніколи б не з'явилися без технологій фоточутливості срібних галоїдів.
+            <strong data-i18n="facts_strong">Цікаві факти:</strong><br>
+            <span data-i18n="facts_body" data-i18n-html="true">• У кожному кадрі працюють мільярди нано-кристалів, що перетворюють світло на срібну історію. <br>• Цифрові файли зникають, але срібло на плівці зберігає зображення понад 150 років — найнадійніший архів після глиняних таблиць. <br>• Напівпровідники та чіпи у вашому смартфоні ніколи б не з'явилися без технологій фоточутливості срібних галоїдів.</span>
         </div>
         <img src="img/made-in-ukraine.png" alt="Зроблено в Україні" style="height: 45px; margin-bottom: 20px;">
-        <p>&copy; 2026 PolyFilms Project. Crafted with Silver and Passion.</p>
+        <p data-i18n="footer_copyright">&copy; 2026 PolyFilms Project. Crafted with Silver and Passion.</p>
     </footer>
 
 </div>
