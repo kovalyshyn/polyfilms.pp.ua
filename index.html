@@ -356,6 +356,14 @@
     return DEFAULT_LANG;
   }
 
+  function escapeHtml(str) {
+    return String(str ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
   function pickLocalized(value, lang) {
     if (value && typeof value === "object" && "uk" in value) {
       return value[lang] || value.uk || "";
@@ -394,8 +402,8 @@
     container.removeAttribute("data-fallback");
     container.innerHTML = items
       .map((it) => {
-        const alt = pickLocalized(it.alt, lang).replace(/"/g, "&quot;");
-        const file = (it.file || "").replace(/"/g, "&quot;");
+        const alt = escapeHtml(pickLocalized(it.alt, lang));
+        const file = escapeHtml(it.file);
         return `<div class="gallery-item"><img src="${file}" alt="${alt}"></div>`;
       })
       .join("");
@@ -407,9 +415,9 @@
     tbody.removeAttribute("data-fallback");
     tbody.innerHTML = items
       .map((b) => {
-        const num = String(b.number || "");
-        const ch = pickLocalized(b.character, lang);
-        const nt = pickLocalized(b.notes, lang);
+        const num = escapeHtml(b.number);
+        const ch = escapeHtml(pickLocalized(b.character, lang));
+        const nt = escapeHtml(pickLocalized(b.notes, lang));
         return `<tr><td>${num}</td><td>${ch}</td><td>${nt}</td></tr>`;
       })
       .join("");
@@ -438,8 +446,6 @@
     applyStrings(strings, currentLang);
     renderGallery(gallery.items || [], currentLang);
     renderBatches(batches.items || [], currentLang);
-    // notify modal init that gallery items were re-rendered
-    document.dispatchEvent(new Event("gallery:rendered"));
 
     document.querySelectorAll("[data-lang-set]").forEach((btn) => {
       btn.addEventListener("click", () => {
