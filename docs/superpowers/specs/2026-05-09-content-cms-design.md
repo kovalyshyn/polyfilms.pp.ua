@@ -178,9 +178,11 @@ Files explicitly excluded from CMS: `darkroomlog-privacy-policy.html`, `index.ht
 Node script that:
 1. Parses current `index.html`.
 2. Extracts the 9 gallery items into `data/gallery.json` (alt copied to both `uk` and `en`).
-3. Extracts the 3 batch rows into `data/batches.json` (UA filled, EN left as `""`; editor or developer translates later).
-4. Extracts static UI strings into `i18n/strings.json` (UA filled, EN to be translated by hand).
-5. Prints a checklist of what still needs an English translation.
+3. Extracts the 3 batch rows into `data/batches.json` (UA filled, EN left as `""`; filled by agent in the next step).
+4. Extracts static UI strings into `i18n/strings.json` (UA filled, EN empty).
+5. Prints a checklist of every key/field that needs an English translation.
+
+After migration, **the agent performs the EN translation pass** in a single editing step (technical photographic copy: ISO, developers, batch character, etc.). No human translator in the loop.
 
 Run once, then deleted from the repo (or archived under `scripts/`).
 
@@ -235,7 +237,7 @@ No automated tests for this size of project.
 3. Update `index.html` with `data-i18n` attributes, render JS, language toggle.
 4. Add `.pages.yml`.
 5. Manually verify rendered output matches current site.
-6. Translate `i18n/strings.json` EN values + EN fields in `data/*.json`.
+6. Agent fills EN values in `i18n/strings.json` and EN fields in `data/*.json` (one pass).
 7. Merge to `main`. Verify GitHub Pages build.
 8. Set up Pages CMS: connect repo, create editor's GitHub account, add as collaborator, walk through editing.
 9. Replace "Стати тестером" CTA with MonoBase link once available.
@@ -261,7 +263,7 @@ No automated tests for this size of project.
 - Migration script + JSON extraction: 1 hr
 - `index.html` refactor (i18n attributes, render JS, toggle): 2 hrs
 - `.pages.yml` + Pages CMS setup + editor onboarding: 1 hr
-- EN translation of all strings: 1–2 hrs (one-time)
+- EN translation of all strings (done by agent): one editing step, no extra human time
 - Verification + smoke tests: 1 hr
 
 **Total: ~6–7 hrs of developer work, plus translation pass.**
