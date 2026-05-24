@@ -195,6 +195,46 @@
 
         footer { text-align: center; padding: 60px 0; border-top: 1px solid var(--border); }
         .fact-footer { color: #555; font-size: 0.75rem; max-width: 800px; margin: 0 auto 40px; line-height: 1.4; }
+
+        .announcement {
+            margin: 80px auto;
+            max-width: 760px;
+            border: 1px solid var(--highlight);
+            background: linear-gradient(180deg, rgba(212,175,55,0.06), rgba(212,175,55,0.02));
+            position: relative;
+        }
+        .announcement::before {
+            content: "";
+            position: absolute;
+            top: -1px; left: -1px; right: -1px;
+            height: 3px;
+            background: var(--highlight);
+        }
+        .announcement-header {
+            text-align: center;
+            padding: 28px 30px 4px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            color: var(--highlight);
+        }
+        .announcement-body {
+            padding: 20px 40px 36px;
+            font-weight: 300;
+            font-size: 0.98rem;
+            color: #d8d8d8;
+            line-height: 1.7;
+        }
+        @media (max-width: 600px) {
+            .announcement-body { padding: 16px 24px 28px; }
+        }
+        .announcement-body p { margin: 0 0 12px; }
+        .announcement-body .question { color: var(--accent); font-style: italic; }
+        .announcement-body .signature {
+            margin-top: 18px;
+            font-style: italic;
+            color: var(--highlight);
+        }
     </style>
 </head>
 <body>
@@ -309,6 +349,25 @@
         </tbody>
     </table>
 
+
+<section class="announcement" aria-label="Announcement from Igor">
+    <div class="announcement-header" data-i18n="announcement_header">Звернення Ігоря</div>
+    <div class="announcement-body" data-i18n="announcement_body" data-i18n-html="true">
+        <p>Дякую всім, хто виявив цікавість до мого проєкту.</p>
+        <p>Я щиро зворушений вашими коментарями та підтримкою.</p>
+        <p>Наша невелика та віддана команда отримала багато запитів.</p>
+        <p class="question">Що ж ми робитимемо?</p>
+        <p>Ми робитимемо плівку! Продовжимо наші дослідження, щоб відкрити нові грані естетики фотоемульсії.</p>
+        <p class="question">Чи станете ви частиною цього дослідження?</p>
+        <p>Ваші кадри та ваші ідеї надихнуть нас і допоможуть стати кращими.</p>
+        <p>Я хвилююся, бо робити плівку для себе — це одне, а робити її для вас — зовсім нове випробування.</p>
+        <p>Наразі ми ставимо замовлення на паузу, оскільки вже маємо роботу на найближчий місяць. Лише за один день сайт повністю злетів з котушок.</p>
+        <p>Перші відправлення розпочнуться на початку літа. Я ділитимуся процесом. Ми домовилися про ціну <strong>330 грн за рулон</strong>, що включає матеріали та підтримку Сил оборони України. Доставка — Новою Поштою за ваш рахунок.</p>
+        <p>Думаю, цей проєкт стане чудовою подорожжю!</p>
+        <p>Очікуйте листа від нашої команди — мені й самому цікаво, що з цього вийде!</p>
+        <p class="signature">Щиро, Ігор</p>
+    </div>
+</section>
 
 <section style="margin: 60px 0; text-align: center;">
         <h3 style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; color: #888; margin-bottom: 30px;" data-i18n="section_partners">Наші партнери</h3>
