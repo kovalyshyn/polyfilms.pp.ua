@@ -235,6 +235,66 @@
             font-style: italic;
             color: var(--highlight);
         }
+
+        .support {
+            margin: -40px auto 80px;
+            max-width: 760px;
+            text-align: center;
+            padding: 0 24px;
+        }
+        .support-title {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            color: #888;
+            margin: 0 0 8px;
+        }
+        .support-text {
+            color: #aaa;
+            font-size: 0.9rem;
+            font-weight: 300;
+            margin: 0 auto 22px;
+            max-width: 520px;
+            line-height: 1.6;
+        }
+        .support-buttons {
+            display: inline-flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .support-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 22px;
+            border: 1px solid var(--highlight);
+            background: transparent;
+            color: var(--highlight);
+            font-family: inherit;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+        }
+        .support-btn:hover,
+        .support-btn:focus-visible {
+            background: var(--highlight);
+            color: #0a0a0a;
+            transform: translateY(-1px);
+            outline: none;
+        }
+        .support-btn svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            fill: currentColor;
+        }
+        @media (max-width: 600px) {
+            .support-btn { padding: 11px 18px; font-size: 0.72rem; letter-spacing: 1.5px; }
+        }
     </style>
 </head>
 <body>
@@ -366,6 +426,30 @@
         <p>Думаю, цей проєкт стане чудовою подорожжю!</p>
         <p>Очікуйте листа від нашої команди — мені й самому цікаво, що з цього вийде!</p>
         <p class="signature">Щиро, Ігор</p>
+    </div>
+</section>
+
+<section class="support" aria-label="Support the project">
+    <h3 class="support-title" data-i18n="support_title">Підтримати проєкт</h3>
+    <p class="support-text" data-i18n="support_text">Якщо ця історія резонує — допоможіть нам варити срібло далі.</p>
+    <div class="support-buttons">
+        <a id="support-paypal"
+           class="support-btn"
+           href="#"
+           rel="noopener"
+           target="_blank"
+           data-paypal-user="cG9seWFrb3Z1c2tv"
+           data-paypal-domain="Z21haWwuY29t">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.067 7.301c.1.561.123 1.177.034 1.85-.49 3.745-2.962 5.247-6.34 5.247h-.74a.78.78 0 0 0-.77.66l-.78 4.952-.22 1.397a.41.41 0 0 1-.4.348H8.07a.34.34 0 0 1-.337-.396l.04-.247.59-3.74.038-.21a.78.78 0 0 1 .77-.66h.487c3.05 0 5.439-1.241 6.137-4.832.291-1.498.142-2.748-.605-3.627-.226-.266-.508-.487-.834-.66.392.85.555 1.84.355 2.918h-.001Zm-1.7-.79c-.32-.171-.677-.298-1.064-.378a8.34 8.34 0 0 0-1.717-.16h-5.21a.78.78 0 0 0-.77.66L8.32 16.41a.49.49 0 0 1-.48.41H5.13a.41.41 0 0 1-.4-.474l2.31-14.65A.78.78 0 0 1 7.81 1H13.7c2.046 0 3.616.443 4.452 1.396.39.444.628.957.74 1.555.117.625.106 1.37-.034 2.255l-.01.054v.46c.392.215.717.482.971.797.43.534.694 1.215.7 2.034.018-.5-.046-.97-.152-1.4Z"/></svg>
+            <span data-i18n="support_paypal_label">PayPal</span>
+        </a>
+        <a class="support-btn"
+           href="https://www.patreon.com/cw/Polyfilm"
+           rel="noopener"
+           target="_blank">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.82 2.41c-3.96 0-7.18 3.22-7.18 7.18 0 3.95 3.22 7.16 7.18 7.16 3.95 0 7.16-3.21 7.16-7.16 0-3.96-3.21-7.18-7.16-7.18ZM2 21.6h3.5V2.41H2V21.6Z"/></svg>
+            <span data-i18n="support_patreon_label">Patreon</span>
+        </a>
     </div>
 </section>
 
@@ -514,6 +598,30 @@
         document.dispatchEvent(new Event("gallery:rendered"));
       });
     });
+
+    const paypalEl = document.getElementById("support-paypal");
+    if (paypalEl) {
+      const buildDonateUrl = () => {
+        const user = atob(paypalEl.dataset.paypalUser || "");
+        const domain = atob(paypalEl.dataset.paypalDomain || "");
+        const email = user + "@" + domain;
+        const params = new URLSearchParams({
+          business: email,
+          currency_code: "EUR",
+          item_name: "PolyFilms Ortho — support",
+        });
+        return "https://www.paypal.com/donate/?" + params.toString();
+      };
+      const resolve = () => {
+        if (paypalEl.getAttribute("href") === "#") {
+          paypalEl.setAttribute("href", buildDonateUrl());
+        }
+      };
+      paypalEl.addEventListener("mouseenter", resolve, { once: true });
+      paypalEl.addEventListener("focus", resolve, { once: true });
+      paypalEl.addEventListener("touchstart", resolve, { once: true, passive: true });
+      paypalEl.addEventListener("click", resolve);
+    }
   }
 
   document.addEventListener("DOMContentLoaded", boot);
