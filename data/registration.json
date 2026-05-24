@@ -1,0 +1,105 @@
+{
+  "open": true,
+  "notify_email": "v.kovalyshyn@gmail.com",
+  "notify_cc": "polyakovusko@gmail.com",
+  "endpoint": "https://polyfilms-register.cloud-143.workers.dev/",
+  "header": {
+    "uk": "Попередня реєстрація",
+    "en": "Pre-registration"
+  },
+  "intro": {
+    "uk": "Це форма попередньої реєстрації. Наша невелика команда виготовляє плівку вручну — не більше 20 рулонів на тиждень. Ми зв'яжемося з вами протягом 2–3 днів після реєстрації, щоб узгодити деталі замовлення та доставки.",
+    "en": "This is a pre-registration form. Our small team hand-makes the film — no more than 20 rolls per week. We'll reach out within 2–3 days of your registration to confirm the order and shipping details."
+  },
+  "labels": {
+    "name": { "uk": "Імʼя", "en": "Name" },
+    "phone": { "uk": "Телефон", "en": "Phone" },
+    "email": { "uk": "Email", "en": "Email" },
+    "country": { "uk": "Країна доставки", "en": "Shipping country" },
+    "address": { "uk": "Адреса доставки", "en": "Shipping address" },
+    "comment": { "uk": "Коментар (необовʼязково)", "en": "Comment (optional)" },
+    "submit": { "uk": "Зареєструватись", "en": "Submit" },
+    "sending": { "uk": "Надсилаємо…", "en": "Sending…" }
+  },
+  "placeholders": {
+    "name": { "uk": "Як до вас звертатись", "en": "Your name" },
+    "phone": { "uk": "+380…", "en": "+1…" },
+    "email": { "uk": "name@example.com", "en": "name@example.com" },
+    "address": {
+      "uk": "Місто, відділення Нової Пошти або повна адреса",
+      "en": "City, street and full postal address"
+    },
+    "comment": {
+      "uk": "Камера, бажаний формат, побажання…",
+      "en": "Camera, preferred format, notes…"
+    }
+  },
+  "country_choose": {
+    "uk": "Оберіть країну",
+    "en": "Choose country"
+  },
+  "countries": [
+    { "code": "UA", "uk": "Україна", "en": "Ukraine" },
+    { "code": "PL", "uk": "Польща", "en": "Poland" },
+    { "code": "DE", "uk": "Німеччина", "en": "Germany" },
+    { "code": "FR", "uk": "Франція", "en": "France" },
+    { "code": "GB", "uk": "Велика Британія", "en": "United Kingdom" },
+    { "code": "US", "uk": "США", "en": "United States" },
+    { "code": "CA", "uk": "Канада", "en": "Canada" },
+    { "code": "IT", "uk": "Італія", "en": "Italy" },
+    { "code": "ES", "uk": "Іспанія", "en": "Spain" },
+    { "code": "PT", "uk": "Португалія", "en": "Portugal" },
+    { "code": "NL", "uk": "Нідерланди", "en": "Netherlands" },
+    { "code": "BE", "uk": "Бельгія", "en": "Belgium" },
+    { "code": "AT", "uk": "Австрія", "en": "Austria" },
+    { "code": "CH", "uk": "Швейцарія", "en": "Switzerland" },
+    { "code": "CZ", "uk": "Чехія", "en": "Czechia" },
+    { "code": "SK", "uk": "Словаччина", "en": "Slovakia" },
+    { "code": "HU", "uk": "Угорщина", "en": "Hungary" },
+    { "code": "RO", "uk": "Румунія", "en": "Romania" },
+    { "code": "BG", "uk": "Болгарія", "en": "Bulgaria" },
+    { "code": "GR", "uk": "Греція", "en": "Greece" },
+    { "code": "IE", "uk": "Ірландія", "en": "Ireland" },
+    { "code": "SE", "uk": "Швеція", "en": "Sweden" },
+    { "code": "NO", "uk": "Норвегія", "en": "Norway" },
+    { "code": "FI", "uk": "Фінляндія", "en": "Finland" },
+    { "code": "DK", "uk": "Данія", "en": "Denmark" },
+    { "code": "EE", "uk": "Естонія", "en": "Estonia" },
+    { "code": "LT", "uk": "Литва", "en": "Lithuania" },
+    { "code": "LV", "uk": "Латвія", "en": "Latvia" },
+    { "code": "AU", "uk": "Австралія", "en": "Australia" },
+    { "code": "JP", "uk": "Японія", "en": "Japan" },
+    { "code": "KR", "uk": "Південна Корея", "en": "South Korea" },
+    { "code": "OTHER", "uk": "Інша (вкажіть у коментарі)", "en": "Other (specify in comment)" }
+  ],
+  "success": {
+    "title": {
+      "uk": "Дякуємо! Заявку отримано.",
+      "en": "Thank you! Registration received."
+    },
+    "body": {
+      "uk": "Ми звʼяжемося з вами протягом 2–3 днів, щоб узгодити деталі та доставку. Очікуйте листа або дзвінка.",
+      "en": "We'll be in touch within 2–3 days to confirm details and shipping. Watch for an email or a call."
+    }
+  },
+  "closed": {
+    "title": {
+      "uk": "Реєстрація тимчасово закрита",
+      "en": "Registration is temporarily closed"
+    },
+    "body": {
+      "uk": "Зараз ми не приймаємо нових заявок — черга заповнена. Слідкуйте за анонсами, скоро відкриємо знову.",
+      "en": "We're not accepting new registrations at the moment — the queue is full. Watch this space; we'll reopen soon."
+    }
+  },
+  "soon": {
+    "title": {
+      "uk": "Форма скоро запрацює",
+      "en": "Form is coming online soon"
+    },
+    "body": {
+      "uk": "Ми завершуємо технічну частину. Поки що напишіть нам напряму — ми обовʼязково відповімо.",
+      "en": "We're finalising the backend. In the meantime, write to us directly — we'll get back to you."
+    }
+  }
+}

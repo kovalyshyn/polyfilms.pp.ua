@@ -1,0 +1,17 @@
+name = "polyfilms-register"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+# Public site URL where the live registration.json lives.
+# The worker fetches recipient emails from here (cached 60s) so Pages CMS edits
+# propagate without re-deploying the worker.
+[vars]
+CONFIG_URL = "https://polyfilms.pp.ua/data/registration.json"
+FROM_EMAIL = "PolyFilms <noreply@polyfilms.pp.ua>"
+
+# Secrets (set via `wrangler secret put RESEND_API_KEY`):
+#   RESEND_API_KEY — Resend API key with send permission
+
+# Routes — point the api subdomain at this worker.
+# Configure in Cloudflare dashboard after deploy:
+#   api.polyfilms.pp.ua/* → polyfilms-register

@@ -68,3 +68,199 @@ content:
               - name: en
                 label: Caption EN
                 type: string
+
+  - name: registration
+    label: Попередня реєстрація
+    type: file
+    path: data/registration.json
+    format: json
+    fields:
+      - name: open
+        label: Реєстрація відкрита
+        type: boolean
+        default: true
+        description: 'Вимкніть, коли черга заповнена — відвідувачі побачать повідомлення «закрито»'
+      - name: notify_email
+        label: Email для сповіщень (основний)
+        type: string
+        required: true
+        description: 'Куди слати листи з новими заявками'
+      - name: notify_cc
+        label: Email копії (CC)
+        type: string
+        description: 'Додаткова адреса, на яку йде копія кожної заявки'
+      - name: endpoint
+        label: URL бекенду (CF Worker)
+        type: string
+        description: 'Якщо порожньо — форма показує повідомлення «скоро запрацює». Заповніть після деплою воркера.'
+      - name: header
+        label: Заголовок секції
+        type: object
+        fields:
+          - { name: uk, label: UA, type: string, required: true }
+          - { name: en, label: EN, type: string, required: true }
+      - name: intro
+        label: Попередження / Вступний текст
+        type: object
+        fields:
+          - { name: uk, label: UA, type: text, required: true }
+          - { name: en, label: EN, type: text, required: true }
+      - name: labels
+        label: Лейбли полів
+        type: object
+        fields:
+          - name: name
+            label: Імʼя
+            type: object
+            fields:
+              - { name: uk, label: UA, type: string }
+              - { name: en, label: EN, type: string }
+          - name: phone
+            label: Телефон
+            type: object
+            fields:
+              - { name: uk, label: UA, type: string }
+              - { name: en, label: EN, type: string }
+          - name: email
+            label: Email
+            type: object
+            fields:
+              - { name: uk, label: UA, type: string }
+              - { name: en, label: EN, type: string }
+          - name: country
+            label: Країна
+            type: object
+            fields:
+              - { name: uk, label: UA, type: string }
+              - { name: en, label: EN, type: string }
+          - name: address
+            label: Адреса
+            type: object
+            fields:
+              - { name: uk, label: UA, type: string }
+              - { name: en, label: EN, type: string }
+          - name: comment
+            label: Коментар
+            type: object
+            fields:
+              - { name: uk, label: UA, type: string }
+              - { name: en, label: EN, type: string }
+          - name: submit
+            label: Кнопка надсилання
+            type: object
+            fields:
+              - { name: uk, label: UA, type: string }
+              - { name: en, label: EN, type: string }
+          - name: sending
+            label: Стан "Надсилаємо…"
+            type: object
+            fields:
+              - { name: uk, label: UA, type: string }
+              - { name: en, label: EN, type: string }
+      - name: placeholders
+        label: Підказки в полях (placeholder)
+        type: object
+        fields:
+          - name: name
+            label: Імʼя
+            type: object
+            fields:
+              - { name: uk, label: UA, type: string }
+              - { name: en, label: EN, type: string }
+          - name: phone
+            label: Телефон
+            type: object
+            fields:
+              - { name: uk, label: UA, type: string }
+              - { name: en, label: EN, type: string }
+          - name: email
+            label: Email
+            type: object
+            fields:
+              - { name: uk, label: UA, type: string }
+              - { name: en, label: EN, type: string }
+          - name: address
+            label: Адреса
+            type: object
+            fields:
+              - { name: uk, label: UA, type: text }
+              - { name: en, label: EN, type: text }
+          - name: comment
+            label: Коментар
+            type: object
+            fields:
+              - { name: uk, label: UA, type: text }
+              - { name: en, label: EN, type: text }
+      - name: country_choose
+        label: Текст «Оберіть країну»
+        type: object
+        fields:
+          - { name: uk, label: UA, type: string }
+          - { name: en, label: EN, type: string }
+      - name: countries
+        label: Список країн доставки
+        type: object
+        list: true
+        description: 'НЕ додавайте сюди РФ, Білорусь та інші країни під санкціями'
+        fields:
+          - name: code
+            label: ISO-код
+            type: string
+            required: true
+            description: 'Наприклад: UA, PL, DE. Або OTHER для пункту «інша»'
+          - name: uk
+            label: Назва UA
+            type: string
+            required: true
+          - name: en
+            label: Name EN
+            type: string
+            required: true
+      - name: success
+        label: Повідомлення про успіх
+        type: object
+        fields:
+          - name: title
+            label: Заголовок
+            type: object
+            fields:
+              - { name: uk, label: UA, type: string }
+              - { name: en, label: EN, type: string }
+          - name: body
+            label: Текст
+            type: object
+            fields:
+              - { name: uk, label: UA, type: text }
+              - { name: en, label: EN, type: text }
+      - name: closed
+        label: Повідомлення коли реєстрація закрита
+        type: object
+        fields:
+          - name: title
+            label: Заголовок
+            type: object
+            fields:
+              - { name: uk, label: UA, type: string }
+              - { name: en, label: EN, type: string }
+          - name: body
+            label: Текст
+            type: object
+            fields:
+              - { name: uk, label: UA, type: text }
+              - { name: en, label: EN, type: text }
+      - name: soon
+        label: Повідомлення коли URL бекенду ще не задано
+        type: object
+        fields:
+          - name: title
+            label: Заголовок
+            type: object
+            fields:
+              - { name: uk, label: UA, type: string }
+              - { name: en, label: EN, type: string }
+          - name: body
+            label: Текст
+            type: object
+            fields:
+              - { name: uk, label: UA, type: text }
+              - { name: en, label: EN, type: text }

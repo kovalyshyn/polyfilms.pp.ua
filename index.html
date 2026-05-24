@@ -295,6 +295,108 @@
         @media (max-width: 600px) {
             .support-btn { padding: 11px 18px; font-size: 0.72rem; letter-spacing: 1.5px; }
         }
+
+        .register {
+            margin: 80px auto;
+            max-width: 760px;
+            border: 1px solid var(--border);
+            background: var(--gray);
+            padding: 36px 40px 40px;
+            scroll-margin-top: 24px;
+        }
+        @media (max-width: 600px) {
+            .register { padding: 28px 22px 30px; }
+        }
+        .register-title {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            color: var(--highlight);
+            margin: 0 0 18px;
+        }
+        .register-intro {
+            color: #c8c8c8;
+            font-size: 0.92rem;
+            line-height: 1.7;
+            font-weight: 300;
+            margin: 0 0 28px;
+            padding: 16px 18px;
+            border-left: 3px solid var(--highlight);
+            background: rgba(212, 175, 55, 0.04);
+        }
+        .register-form { display: grid; gap: 18px; }
+        .register-field { display: flex; flex-direction: column; gap: 6px; }
+        .register-field > span {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #aaa;
+        }
+        .register-field input,
+        .register-field select,
+        .register-field textarea {
+            background: #0a0a0a;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 11px 12px;
+            font: inherit;
+            font-size: 0.95rem;
+            border-radius: 0;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+        .register-field input:focus,
+        .register-field select:focus,
+        .register-field textarea:focus {
+            border-color: var(--highlight);
+        }
+        .register-field textarea { min-height: 88px; resize: vertical; }
+        .register-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        @media (max-width: 600px) {
+            .register-row { grid-template-columns: 1fr; }
+        }
+        .register-honey {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .register-submit {
+            margin-top: 8px;
+            justify-self: start;
+            cursor: pointer;
+            border: none;
+            font: inherit;
+            font-size: 0.85rem;
+        }
+        .register-submit:disabled { opacity: 0.6; cursor: wait; }
+        .register-notice {
+            text-align: center;
+            padding: 24px 12px;
+        }
+        .register-notice h4 {
+            margin: 0 0 10px;
+            color: var(--highlight);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+        }
+        .register-notice p {
+            margin: 0;
+            color: #c8c8c8;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+        .register-error {
+            color: #ff8080;
+            font-size: 0.88rem;
+            margin-top: 4px;
+            display: none;
+        }
+        .register-error[data-visible="true"] { display: block; }
     </style>
 </head>
 <body>
@@ -426,6 +528,67 @@
         <p>Думаю, цей проєкт стане чудовою подорожжю!</p>
         <p>Очікуйте листа від нашої команди — мені й самому цікаво, що з цього вийде!</p>
         <p class="signature">Щиро, Ігор</p>
+    </div>
+</section>
+
+<section class="register" id="pre-register" aria-label="Pre-registration">
+    <h3 class="register-title" data-register-text="header">Попередня реєстрація</h3>
+    <p class="register-intro" data-register-text="intro"></p>
+
+    <form class="register-form" id="register-form" novalidate hidden>
+        <div class="register-row">
+            <label class="register-field">
+                <span data-register-text="labels.name"></span>
+                <input type="text" name="name" required autocomplete="name" data-register-placeholder="placeholders.name">
+            </label>
+            <label class="register-field">
+                <span data-register-text="labels.phone"></span>
+                <input type="tel" name="phone" required autocomplete="tel" data-register-placeholder="placeholders.phone">
+            </label>
+        </div>
+
+        <label class="register-field">
+            <span data-register-text="labels.email"></span>
+            <input type="email" name="email" required autocomplete="email" data-register-placeholder="placeholders.email">
+        </label>
+
+        <label class="register-field">
+            <span data-register-text="labels.country"></span>
+            <select name="country" required>
+                <option value="" disabled selected></option>
+            </select>
+        </label>
+
+        <label class="register-field">
+            <span data-register-text="labels.address"></span>
+            <textarea name="address" required autocomplete="street-address" data-register-placeholder="placeholders.address"></textarea>
+        </label>
+
+        <label class="register-field">
+            <span data-register-text="labels.comment"></span>
+            <textarea name="comment" data-register-placeholder="placeholders.comment"></textarea>
+        </label>
+
+        <input type="text" name="company" class="register-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="register-error" id="register-error"></div>
+
+        <button type="submit" class="btn register-submit" data-register-text="labels.submit">Зареєструватись</button>
+    </form>
+
+    <div class="register-notice" id="register-success" hidden>
+        <h4 data-register-text="success.title"></h4>
+        <p data-register-text="success.body"></p>
+    </div>
+
+    <div class="register-notice" id="register-closed" hidden>
+        <h4 data-register-text="closed.title"></h4>
+        <p data-register-text="closed.body"></p>
+    </div>
+
+    <div class="register-notice" id="register-soon" hidden>
+        <h4 data-register-text="soon.title"></h4>
+        <p data-register-text="soon.body"></p>
     </div>
 </section>
 
@@ -566,6 +729,113 @@
       .join("");
   }
 
+  function getByPath(obj, path) {
+    if (!obj || !path) return undefined;
+    return path.split(".").reduce((acc, key) => (acc == null ? acc : acc[key]), obj);
+  }
+
+  function renderRegistration(config, lang) {
+    const section = document.getElementById("pre-register");
+    if (!section || !config) return;
+
+    section.querySelectorAll("[data-register-text]").forEach((el) => {
+      const val = pickLocalized(getByPath(config, el.dataset.registerText), lang);
+      el.textContent = val;
+    });
+    section.querySelectorAll("[data-register-placeholder]").forEach((el) => {
+      const val = pickLocalized(getByPath(config, el.dataset.registerPlaceholder), lang);
+      el.placeholder = val;
+    });
+
+    const sel = section.querySelector('select[name="country"]');
+    if (sel) {
+      const currentValue = sel.value;
+      const placeholder = pickLocalized(config.country_choose, lang);
+      const opts = (config.countries || []).map((c) => {
+        const name = c[lang] || c.uk || c.code;
+        return `<option value="${escapeHtml(c.code)}">${escapeHtml(name)}</option>`;
+      });
+      sel.innerHTML =
+        `<option value="" disabled${currentValue ? "" : " selected"}>${escapeHtml(placeholder)}</option>` +
+        opts.join("");
+      if (currentValue) sel.value = currentValue;
+    }
+
+    const form = document.getElementById("register-form");
+    const successEl = document.getElementById("register-success");
+    const closedEl = document.getElementById("register-closed");
+    const soonEl = document.getElementById("register-soon");
+
+    // If the user already submitted successfully in this session, keep showing the thank-you.
+    if (!successEl.hidden) return;
+
+    form.hidden = true;
+    closedEl.hidden = true;
+    soonEl.hidden = true;
+    if (config.open === false) {
+      closedEl.hidden = false;
+    } else if (!config.endpoint) {
+      soonEl.hidden = false;
+    } else {
+      form.hidden = false;
+    }
+  }
+
+  function setupRegistrationForm(getConfig, getLang) {
+    const form = document.getElementById("register-form");
+    if (!form) return;
+    const errorEl = document.getElementById("register-error");
+    const successEl = document.getElementById("register-success");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const config = getConfig();
+      if (!config || !config.endpoint) return;
+
+      errorEl.removeAttribute("data-visible");
+      errorEl.textContent = "";
+
+      const fd = new FormData(form);
+      if (fd.get("company")) return; // honeypot tripped — silently drop
+
+      const lang = getLang();
+      const payload = {
+        name: (fd.get("name") || "").toString().trim(),
+        phone: (fd.get("phone") || "").toString().trim(),
+        email: (fd.get("email") || "").toString().trim(),
+        country: (fd.get("country") || "").toString().trim(),
+        address: (fd.get("address") || "").toString().trim(),
+        comment: (fd.get("comment") || "").toString().trim(),
+        lang,
+      };
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = pickLocalized(config.labels && config.labels.sending, lang) || originalText;
+
+      try {
+        const res = await fetch(config.endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        form.hidden = true;
+        successEl.hidden = false;
+        successEl.scrollIntoView({ behavior: "smooth", block: "center" });
+      } catch (err) {
+        console.error("Registration failed:", err);
+        errorEl.textContent = lang === "en"
+          ? "Submission failed. Please try again, or write to us directly."
+          : "Не вдалося надіслати. Спробуйте ще раз або напишіть нам напряму.";
+        errorEl.setAttribute("data-visible", "true");
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  }
+
   async function loadJSON(path) {
     const res = await fetch(path, { cache: "no-cache" });
     if (!res.ok) throw new Error(`${path}: ${res.status}`);
@@ -585,10 +855,18 @@
       return;
     }
 
+    let registrationConfig = null;
+    try {
+      registrationConfig = await loadJSON("data/registration.json");
+    } catch (err) {
+      console.warn("registration.json missing or invalid:", err);
+    }
+
     let currentLang = detectLang();
     applyStrings(strings, currentLang);
     renderGallery(gallery.items || [], currentLang);
     renderBatches(batches.items || [], currentLang);
+    if (registrationConfig) renderRegistration(registrationConfig, currentLang);
 
     document.querySelectorAll("[data-lang-set]").forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -597,9 +875,12 @@
         applyStrings(strings, currentLang);
         renderGallery(gallery.items || [], currentLang);
         renderBatches(batches.items || [], currentLang);
+        if (registrationConfig) renderRegistration(registrationConfig, currentLang);
         document.dispatchEvent(new Event("gallery:rendered"));
       });
     });
+
+    setupRegistrationForm(() => registrationConfig, () => currentLang);
 
     const paypalEl = document.getElementById("support-paypal");
     if (paypalEl) {
