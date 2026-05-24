@@ -1,66 +1,73 @@
 {
   "items": [
     {
-      "file": "img/test1.jpg",
+      "file": "/img/test1.jpg",
       "alt": {
         "uk": "Batch 260301 | Baldaxette I | ISO 18",
         "en": "Batch 260301 | Baldaxette I | ISO 18"
       }
     },
     {
-      "file": "img/test2.jpg",
+      "file": "/img/test2.jpg",
       "alt": {
         "uk": "Batch 260301 | Rolleiflex | ISO 18",
         "en": "Batch 260301 | Rolleiflex | ISO 18"
       }
     },
     {
-      "file": "img/test3.jpg",
+      "file": "/img/test3.jpg",
       "alt": {
         "uk": "Batch 260301 | RB67 | ISO 16",
         "en": "Batch 260301 | RB67 | ISO 16"
       }
     },
     {
-      "file": "img/test4.jpg",
+      "file": "/img/test4.jpg",
       "alt": {
         "uk": "Batch 260301 | RB67 | ISO 16",
         "en": "Batch 260301 | RB67 | ISO 16"
       }
     },
     {
-      "file": "img/test5.jpg",
+      "file": "/img/test5.jpg",
       "alt": {
         "uk": "Batch 260301 | Baldaxette I | ISO 18",
         "en": "Batch 260301 | Baldaxette I | ISO 18"
       }
     },
     {
-      "file": "img/test6.jpg",
+      "file": "/img/test6.jpg",
       "alt": {
         "uk": "Batch 260321 | ISO 20",
         "en": "Batch 260321 | ISO 20"
       }
     },
     {
-      "file": "img/test7.jpg",
+      "file": "/img/test7.jpg",
       "alt": {
         "uk": "Batch 260321 | Baldaxette I | ISO 20",
         "en": "Batch 260321 | Baldaxette I | ISO 20"
       }
     },
     {
-      "file": "img/test8.jpg",
+      "file": "/img/test8.jpg",
       "alt": {
         "uk": "Batch 260321 | ISO 20",
         "en": "Batch 260321 | ISO 20"
       }
     },
     {
-      "file": "img/test9.jpg",
+      "file": "/img/test9.jpg",
       "alt": {
         "uk": "Batch 260321 | Yashica Mat-EM | ISO 20",
         "en": "Batch 260321 | Yashica Mat-EM | ISO 20"
+      }
+    },
+    {
+      "file": "/img/669534893_1583816139394079_5441365706742074063_n.jpg",
+      "alt": {
+        "uk": "Batch Art303 | Mamiya c330| ISO 20",
+        "en": "Batch Art303 | Mamiya c330| ISO 20"
       }
     }
   ]
