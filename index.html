@@ -876,7 +876,6 @@
         renderGallery(gallery.items || [], currentLang);
         renderBatches(batches.items || [], currentLang);
         if (registrationConfig) renderRegistration(registrationConfig, currentLang);
-        document.dispatchEvent(new Event("gallery:rendered"));
       });
     });
 
@@ -912,33 +911,40 @@
 </script>
 
 <script>
-    window.onload = function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const modal = document.getElementById('modal');
         const modalImg = document.getElementById('modal-img');
         const modalCaption = document.getElementById('modal-caption');
         const prevBtn = document.getElementById('modal-prev');
         const nextBtn = document.getElementById('modal-next');
         const closeBtn = document.getElementById('modal-close');
+        const galleryEl = document.getElementById('gallery-container');
 
-        let images = [];
         let currentIndex = 0;
 
-        function bindImages() {
-            images = Array.from(document.querySelectorAll('.gallery-item img'));
-            images.forEach((img, i) => {
-                img.onclick = () => openModal(i);
-            });
+        // Re-query on each open so async gallery re-renders never leave us with stale refs.
+        function currentImages() {
+            return galleryEl ? Array.from(galleryEl.querySelectorAll('.gallery-item img')) : [];
         }
 
         function openModal(index) {
-            currentIndex = (index + images.length) % images.length;
+            const imgs = currentImages();
+            if (!imgs.length) return;
+            currentIndex = (index + imgs.length) % imgs.length;
             modal.style.display = 'flex';
-            modalImg.src = images[currentIndex].src;
-            modalCaption.innerText = images[currentIndex].alt;
+            modalImg.src = imgs[currentIndex].src;
+            modalCaption.innerText = imgs[currentIndex].alt;
         }
 
-        bindImages();
-        document.addEventListener('gallery:rendered', bindImages);
+        // Delegated click on the container survives any innerHTML swap of .gallery-item.
+        if (galleryEl) {
+            galleryEl.addEventListener('click', (e) => {
+                const img = e.target.closest('.gallery-item img');
+                if (!img) return;
+                const idx = currentImages().indexOf(img);
+                if (idx !== -1) openModal(idx);
+            });
+        }
 
         prevBtn.addEventListener('click', (e) => { e.stopPropagation(); openModal(currentIndex - 1); });
         nextBtn.addEventListener('click', (e) => { e.stopPropagation(); openModal(currentIndex + 1); });
@@ -960,7 +966,7 @@
             if (Math.abs(dx) < 50) return;
             openModal(dx < 0 ? currentIndex + 1 : currentIndex - 1);
         });
-    };
+    });
 </script>
 
 <!-- Google tag (gtag.js) -->
