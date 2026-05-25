@@ -1,7 +1,7 @@
 {
   "open": true,
-  "notify_email": "v.kovalyshyn@gmail.com",
-  "notify_cc": "polyakovusko@gmail.com",
+  "notify_email": "polyakovusko@gmail.com",
+  "notify_cc": "v.kovalyshyn@gmail.com",
   "endpoint": "https://polyfilms-register.cloud-143.workers.dev/",
   "header": {
     "uk": "Попередня реєстрація",
