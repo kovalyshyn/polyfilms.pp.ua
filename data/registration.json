@@ -8,7 +8,7 @@
     "en": "Pre-registration"
   },
   "intro": {
-    "uk": "Це форма попередньої реєстрації. Наша невелика команда виготовляє плівку вручну — не більше 20 рулонів на тиждень. Ми зв'яжемося з вами протягом 2–3 днів після реєстрації, щоб узгодити деталі замовлення та доставки.",
+    "uk": "Це форма попередньої реєстрації. Наша невелика команда виготовляє плівку вручну — не більше 20 рулонів на тиждень. Ми зв'яжемося з вами протягом 2–3 днів після реєстрації, щоб узгодити деталі замовлення та час очікування на достувку.",
     "en": "This is a pre-registration form. Our small team hand-makes the film — no more than 20 rolls per week. We'll reach out within 2–3 days of your registration to confirm the order and shipping details."
   },
   "labels": {
@@ -30,8 +30,8 @@
       "en": "City, street and full postal address"
     },
     "comment": {
-      "uk": "Камера, бажаний формат, побажання…",
-      "en": "Camera, preferred format, notes…"
+      "uk": "побажання…",
+      "en": "notes…"
     }
   },
   "country_choose": {
