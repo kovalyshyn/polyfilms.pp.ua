@@ -397,6 +397,72 @@
             display: none;
         }
         .register-error[data-visible="true"] { display: block; }
+
+        .testimonials {
+            margin: 80px auto;
+            max-width: 760px;
+            padding: 0 24px;
+        }
+        .testimonials-title {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            color: var(--highlight);
+            margin: 0 0 24px;
+        }
+        .testimonials-track {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 4px 0 14px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border) transparent;
+        }
+        .testimonials-track::-webkit-scrollbar { height: 4px; }
+        .testimonials-track::-webkit-scrollbar-track { background: transparent; }
+        .testimonials-track::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+        .testimonial-card {
+            flex: 0 0 auto;
+            width: 300px;
+            min-height: 170px;
+            box-sizing: border-box;
+            background: var(--gray);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--highlight);
+            padding: 22px 24px 20px;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+        }
+        .testimonial-card::before {
+            content: "«";
+            color: var(--border);
+            font-size: 2.6rem;
+            line-height: 0.5;
+            margin-bottom: 10px;
+        }
+        @media (max-width: 600px) {
+            .testimonial-card { width: 80vw; max-width: 320px; }
+        }
+        .testimonial-quote {
+            margin: 0;
+            font-weight: 300;
+            font-style: italic;
+            color: #d8d8d8;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .testimonial-author {
+            margin-top: auto;
+            padding-top: 16px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--highlight);
+        }
     </style>
 </head>
 <body>
@@ -592,6 +658,11 @@
     </div>
 </section>
 
+<section class="testimonials" id="testimonials" aria-label="Testimonials" hidden>
+    <h3 class="testimonials-title" data-i18n="section_testimonials">Нам пишуть</h3>
+    <div class="testimonials-track" id="testimonials-track"></div>
+</section>
+
 <section class="support" aria-label="Support the project">
     <h3 class="support-title" data-i18n="support_title">Підтримати проєкт</h3>
     <p class="support-text" data-i18n="support_text">Якщо ця історія резонує — допоможіть нам варити срібло далі.</p>
@@ -729,6 +800,30 @@
       .join("");
   }
 
+  // Testimonials are single-language by design: the quote stays in whatever
+  // language it was written in, so this render is language-independent.
+  function renderTestimonials(items) {
+    const section = document.getElementById("testimonials");
+    const track = document.getElementById("testimonials-track");
+    if (!section || !track) return;
+    const list = (items || []).filter((t) => t && t.quote);
+    if (!list.length) {
+      section.hidden = true; // no items → keep the section (and its heading) out of the page
+      return;
+    }
+    track.innerHTML = list
+      .map((t) => {
+        const quote = escapeHtml(t.quote);
+        const author = escapeHtml(t.author);
+        const caption = author
+          ? `<figcaption class="testimonial-author">— ${author}</figcaption>`
+          : "";
+        return `<figure class="testimonial-card"><blockquote class="testimonial-quote">${quote}</blockquote>${caption}</figure>`;
+      })
+      .join("");
+    section.hidden = false;
+  }
+
   function getByPath(obj, path) {
     if (!obj || !path) return undefined;
     return path.split(".").reduce((acc, key) => (acc == null ? acc : acc[key]), obj);
@@ -862,11 +957,19 @@
       console.warn("registration.json missing or invalid:", err);
     }
 
+    let testimonials = null;
+    try {
+      testimonials = await loadJSON("data/testimonials.json");
+    } catch (err) {
+      console.warn("testimonials.json missing or invalid:", err);
+    }
+
     let currentLang = detectLang();
     applyStrings(strings, currentLang);
     renderGallery(gallery.items || [], currentLang);
     renderBatches(batches.items || [], currentLang);
     if (registrationConfig) renderRegistration(registrationConfig, currentLang);
+    if (testimonials) renderTestimonials(testimonials.items || []);
 
     document.querySelectorAll("[data-lang-set]").forEach((btn) => {
       btn.addEventListener("click", () => {

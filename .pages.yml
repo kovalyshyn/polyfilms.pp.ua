@@ -69,6 +69,28 @@ content:
                 label: Caption EN
                 type: string
 
+  - name: testimonials
+    label: Нам пишуть (Відгуки)
+    type: file
+    path: data/testimonials.json
+    format: json
+    fields:
+      - name: items
+        label: Відгуки
+        type: object
+        list: true
+        fields:
+          - name: quote
+            label: Текст відгуку
+            type: text
+            required: true
+            description: 'Залиште мовою оригіналу — переклад не потрібен, показується однаково в усіх мовах'
+          - name: author
+            label: Підпис
+            type: string
+            required: true
+            description: 'Імʼя, @нік або місто. Наприклад: Андрій, Київ'
+
   - name: registration
     label: Попередня реєстрація
     type: file
