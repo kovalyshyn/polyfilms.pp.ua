@@ -61,6 +61,36 @@
             margin-top: 10px;
         }
 
+        .header-support {
+            display: inline-flex;
+            gap: 14px;
+            justify-content: center;
+            margin-top: 24px;
+        }
+        .header-support a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--highlight);
+            border-radius: 50%;
+            color: var(--highlight);
+            transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+        }
+        .header-support a:hover,
+        .header-support a:focus-visible {
+            background: var(--highlight);
+            color: #0a0a0a;
+            transform: translateY(-2px);
+            outline: none;
+        }
+        .header-support svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
         .manifesto-quote {
             max-width: 700px;
             margin: 40px auto;
@@ -235,6 +265,58 @@
             font-style: italic;
             color: var(--highlight);
         }
+
+        .press {
+            margin: 60px auto;
+            max-width: 760px;
+            padding: 0 24px;
+        }
+        .press-lead {
+            text-align: center;
+            color: #aaa;
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 1.6;
+            margin: 0 auto 20px;
+            max-width: 560px;
+        }
+        .press-card {
+            display: block;
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--header-accent);
+            background: var(--gray);
+            padding: 22px 26px;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.25s ease, transform 0.25s ease;
+        }
+        .press-card:hover,
+        .press-card:focus-visible {
+            border-left-color: var(--accent);
+            transform: translateY(-2px);
+            outline: none;
+        }
+        .press-eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.7rem;
+            color: #888;
+            margin: 0 0 10px;
+        }
+        .press-headline {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 400;
+            font-size: 1.15rem;
+            color: var(--accent);
+            margin: 0 0 10px;
+            line-height: 1.35;
+        }
+        .press-source {
+            font-size: 0.8rem;
+            color: var(--header-accent);
+            letter-spacing: 0.5px;
+        }
+        .press-source::after { content: " ↗"; }
 
         .support {
             margin: -40px auto 80px;
@@ -476,6 +558,15 @@
         </div>
         <h1><span class="ortho">Poly</span>Film Ortho</h1>
         <p class="tagline" data-i18n="tagline">Перша українська крафтова плівка</p>
+        <div class="header-support">
+            <a href="https://www.patreon.com/cw/Polyfilm" target="_blank" rel="noopener" aria-label="Patreon" title="Patreon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.82 2.41c-3.96 0-7.18 3.22-7.18 7.18 0 3.95 3.22 7.16 7.18 7.16 3.95 0 7.16-3.21 7.16-7.16 0-3.96-3.21-7.18-7.16-7.18ZM2 21.6h3.5V2.41H2V21.6Z"/></svg>
+            </a>
+            <a class="support-paypal" href="#" target="_blank" rel="noopener" aria-label="PayPal" title="PayPal"
+               data-paypal-user="cG9seWFrb3Z1c2tv" data-paypal-domain="Z21haWwuY29t">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.067 7.301c.1.561.123 1.177.034 1.85-.49 3.745-2.962 5.247-6.34 5.247h-.74a.78.78 0 0 0-.77.66l-.78 4.952-.22 1.397a.41.41 0 0 1-.4.348H8.07a.34.34 0 0 1-.337-.396l.04-.247.59-3.74.038-.21a.78.78 0 0 1 .77-.66h.487c3.05 0 5.439-1.241 6.137-4.832.291-1.498.142-2.748-.605-3.627-.226-.266-.508-.487-.834-.66.392.85.555 1.84.355 2.918h-.001Zm-1.7-.79c-.32-.171-.677-.298-1.064-.378a8.34 8.34 0 0 0-1.717-.16h-5.21a.78.78 0 0 0-.77.66L8.32 16.41a.49.49 0 0 1-.48.41H5.13a.41.41 0 0 1-.4-.474l2.31-14.65A.78.78 0 0 1 7.81 1H13.7c2.046 0 3.616.443 4.452 1.396.39.444.628.957.74 1.555.117.625.106 1.37-.034 2.255l-.01.054v.46c.392.215.717.482.971.797.43.534.694 1.215.7 2.034.018-.5-.046-.97-.152-1.4Z"/></svg>
+            </a>
+        </div>
     </header>
 
     <div class="manifesto-quote" data-i18n="manifesto">
@@ -597,6 +688,15 @@
     </div>
 </section>
 
+<section class="press" aria-label="In the press">
+    <p class="press-lead" data-i18n="press_lead">Закордонний автор замовив наші плівки й написав велику статтю про проєкт — найцілісніший погляд на цю історію збоку.</p>
+    <a class="press-card" href="https://alexkess.substack.com/p/someone-is-making-film-by-hand-in" target="_blank" rel="noopener">
+        <p class="press-eyebrow" data-i18n="press_eyebrow">Про нас пишуть</p>
+        <p class="press-headline">“Someone Is Making Film by Hand in Wartime Ukraine. I Ordered Four Rolls.”</p>
+        <span class="press-source">The Empty Canvas · AlexKess</span>
+    </a>
+</section>
+
 <section class="register" id="pre-register" aria-label="Pre-registration">
     <h3 class="register-title" data-register-text="header">Попередня реєстрація</h3>
     <p class="register-intro" data-register-text="intro"></p>
@@ -697,6 +797,10 @@
         <a class="support-btn" href="https://filmly.co.ua/" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18V3H3Zm2 2h2v2H5V5Zm12 0h2v2h-2V5ZM9 5h6v6H9V5Zm-4 4h2v2H5V9Zm12 0h2v2h-2V9ZM5 13h2v2H5v-2Zm12 0h2v2h-2v-2ZM9 13h6v6H9v-6Zm-4 4h2v2H5v-2Zm12 0h2v2h-2v-2Z"/></svg>
             <span>FILMLY</span>
+        </a>
+        <a class="support-btn" href="https://filmservice.prom.ua/ua/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 7.2 5H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-3.2L15 3H9Zm3 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+            <span>FILM SERVICE</span>
         </a>
     </div>
 </section>
@@ -984,29 +1088,29 @@
 
     setupRegistrationForm(() => registrationConfig, () => currentLang);
 
-    const paypalEl = document.getElementById("support-paypal");
-    if (paypalEl) {
-      const buildDonateUrl = () => {
-        const user = atob(paypalEl.dataset.paypalUser || "");
-        const domain = atob(paypalEl.dataset.paypalDomain || "");
-        const email = user + "@" + domain;
-        const params = new URLSearchParams({
-          business: email,
-          currency_code: "EUR",
-          item_name: "PolyFilms Ortho — support",
-        });
-        return "https://www.paypal.com/donate/?" + params.toString();
-      };
+    const buildDonateUrl = (el) => {
+      const user = atob(el.dataset.paypalUser || "");
+      const domain = atob(el.dataset.paypalDomain || "");
+      const email = user + "@" + domain;
+      const params = new URLSearchParams({
+        business: email,
+        currency_code: "EUR",
+        item_name: "PolyFilms Ortho — support",
+      });
+      return "https://www.paypal.com/donate/?" + params.toString();
+    };
+    // Both the header strip and the footer block carry a PayPal link; resolve each lazily.
+    document.querySelectorAll("[data-paypal-user]").forEach((paypalEl) => {
       const resolve = () => {
         if (paypalEl.getAttribute("href") === "#") {
-          paypalEl.setAttribute("href", buildDonateUrl());
+          paypalEl.setAttribute("href", buildDonateUrl(paypalEl));
         }
       };
       paypalEl.addEventListener("mouseenter", resolve, { once: true });
       paypalEl.addEventListener("focus", resolve, { once: true });
       paypalEl.addEventListener("touchstart", resolve, { once: true, passive: true });
       paypalEl.addEventListener("click", resolve);
-    }
+    });
   }
 
   document.addEventListener("DOMContentLoaded", boot);
