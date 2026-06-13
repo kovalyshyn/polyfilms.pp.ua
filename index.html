@@ -345,6 +345,15 @@
             flex-wrap: wrap;
             justify-content: center;
         }
+        .support-note {
+            max-width: 520px;
+            margin: 18px auto 0;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: #888;
+        }
+        .support-note:empty { display: none; }
+        .support-note a { color: var(--accent); }
         .support-btn {
             display: inline-flex;
             align-items: center;
@@ -785,6 +794,7 @@
             <span data-i18n="support_patreon_label">Patreon</span>
         </a>
     </div>
+    <p class="support-note" data-i18n="support_paypal_note" data-i18n-html="true"></p>
 </section>
 
 <section class="support" aria-label="Our partners" style="margin-top: 60px;">
