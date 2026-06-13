@@ -878,6 +878,12 @@
         el.textContent = value;
       }
     });
+    // Assemble obfuscated emails client-side so they never sit in static source.
+    document.querySelectorAll(".pp-email").forEach((el) => {
+      const u = el.getAttribute("data-u");
+      const d = el.getAttribute("data-d");
+      if (u && d) el.textContent = atob(u) + "@" + atob(d);
+    });
     // toggle aria-current on language buttons
     document.querySelectorAll("[data-lang-set]").forEach((btn) => {
       btn.setAttribute(
