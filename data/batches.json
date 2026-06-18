@@ -36,8 +36,12 @@
     {
       "number": "260526 (stars)",
       "character": {
-        "uk": "ISO 25–30 Зявилися цікаві артефакти у формі зірочок. ретельна промивка і стоп після проявника має допомогти",
-        "en": "ISO 25–30 Some interesting star-shaped artifacts have appeared. Thorough rinsing and a stop bath after the developer should help."
+        "uk": " Зявилися цікаві артефакти у формі зірочок. ретельна промивка і стоп після проявника має допомогти",
+        "en": "Some interesting star-shaped artifacts have appeared. Thorough rinsing and a stop bath after the developer should help."
+      },
+      "notes": {
+        "uk": "ISO 25–30 Рекомендована попередня промивка, стоп після проявника і гарна промивка після фіксажу. Гарно промивати плівку, не протягувати по емульсії щипцями зняття води.... Проявка 12хв",
+        "en": "ISO 25–30 A pre-rinse is recommended, followed by a stop bath after development and a thorough rinse after fixing. Rinse the film thoroughly; do not drag it across the emulsion with water-removal tweezers.... Development time: 12 min"
       }
     }
   ]
