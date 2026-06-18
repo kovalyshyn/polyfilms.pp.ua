@@ -2,18 +2,43 @@
   "items": [
     {
       "number": "260301",
-      "character": { "uk": "Класична / Тональна", "en": "Classic / Tonal" },
-      "notes": { "uk": "М'які переходи, ідеальна для портретів при денному світлі.", "en": "Smooth tonal transitions; ideal for daylight portraits." }
+      "character": {
+        "uk": "Класична / Тональна",
+        "en": "Classic / Tonal"
+      },
+      "notes": {
+        "uk": "М'які переходи, ідеальна для портретів при денному світлі.",
+        "en": "Smooth tonal transitions; ideal for daylight portraits."
+      }
     },
     {
       "number": "260321",
-      "character": { "uk": "Стабілізаці / Температура", "en": "Stabilization / Temperature" },
-      "notes": { "uk": "Чесні ISO20 та можна проявляти у 20C.", "en": "Honest ISO 20; can be developed at 20°C." }
+      "character": {
+        "uk": "Стабілізаці / Температура",
+        "en": "Stabilization / Temperature"
+      },
+      "notes": {
+        "uk": "Чесні ISO20 та можна проявляти у 20C.",
+        "en": "Honest ISO 20; can be developed at 20°C."
+      }
     },
     {
       "number": "260410",
-      "character": { "uk": "Більше срібла", "en": "More silver" },
-      "notes": { "uk": "ISO 25-30 та більше срібла.", "en": "ISO 25–30 and richer silver content." }
+      "character": {
+        "uk": "Більше срібла",
+        "en": "More silver"
+      },
+      "notes": {
+        "uk": "ISO 25-30 та більше срібла.",
+        "en": "ISO 25–30 and richer silver content."
+      }
+    },
+    {
+      "number": "260526 (stars)",
+      "character": {
+        "uk": "ISO 25–30 Зявилися цікаві артефакти у формі зірочок. ретельна промивка і стоп після проявника має допомогти",
+        "en": "ISO 25–30 Some interesting star-shaped artifacts have appeared. Thorough rinsing and a stop bath after the developer should help."
+      }
     }
   ]
 }
