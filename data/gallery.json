@@ -29,13 +29,6 @@
       }
     },
     {
-      "file": "/img/test6.jpg",
-      "alt": {
-        "uk": "Batch 260321 | ISO 20| Photo by Igor Poliakov ",
-        "en": "Batch 260321 | ISO 20| Photo by Igor Poliakov"
-      }
-    },
-    {
       "file": "/img/test7.jpg",
       "alt": {
         "uk": "Batch 260321 | Baldaxette I | ISO 20| Photo by Vitalii Kovalyshyn",
@@ -54,13 +47,6 @@
       "alt": {
         "uk": "Batch Art303 | Mamiya c330| ISO 25| Photo by Diana grains_and_ashes",
         "en": "Batch Art303 | Mamiya c330| ISO 25| Photo by Diana grains_and_ashes"
-      }
-    },
-    {
-      "file": "/img/5208958580684429081 (1).jpg",
-      "alt": {
-        "uk": "Batch 260321 | Yashica Mat-EM | ISO 18| Photo by Pavlo Parubochyi",
-        "en": "Batch 260321 | Yashica Mat-EM | ISO 18| Photo by Pavlo Parubochyi"
       }
     },
     {
@@ -126,6 +112,40 @@
         "en": "ISO 20| Photo by Pavlo Parubochyi"
       }
     },
-    {}
+    {
+      "file": "/img/$(FILE_NAME)а.jpg",
+      "alt": {
+        "uk": "ISO 25| Photo by Per Moen",
+        "en": "ISO 25| Photo by Per Moen"
+      }
+    },
+    {
+      "file": "/img/774984558_1053310010626151_1333407759008760161_n.jpg",
+      "alt": {
+        "uk": "Graflex |prototipe 4x5| Photo by Rob Kaniuk",
+        "en": "Graflex |prototipe 4x5| Photo by Rob Kaniuk"
+      }
+    },
+    {
+      "file": "/img/752569809_10245134631919257_6522754470803425324_n (1).jpg",
+      "alt": {
+        "uk": "ISO 25| Photo by Paul Thomas",
+        "en": "ISO 25| Photo by Paul Thomas"
+      }
+    },
+    {
+      "file": "/img/07b11e0a-1566-47ef-ac29-3a542b4223b4.jpg",
+      "alt": {
+        "uk": "ISO 25| Photo by Igor Poliakov",
+        "en": "ISO 25| Photo by Igor Poliakov"
+      }
+    },
+    {
+      "file": "/img/5213135767092271932.jpg",
+      "alt": {
+        "uk": "Batch 260321 |Hasselblad| ISO 16| Photo by Ari Jaaksi",
+        "en": "Batch 260321 |Hasselblad| ISO 16| Photo by Ari Jaaksi"
+      }
+    }
   ]
 }
