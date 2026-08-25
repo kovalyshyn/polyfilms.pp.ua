@@ -43,6 +43,17 @@
         "uk": "ISO 30 Рекомендована попередня промивка, стоп після проявника і гарна промивка після фіксажу. Гарно промивати плівку, не протягувати по емульсії щипцями зняття води.... Проявка 8-12хв",
         "en": "ISO 30 A pre-rinse is recommended, followed by a stop bath after development and a thorough rinse after fixing. Rinse the film thoroughly; do not drag it across the emulsion with water-removal tweezers.... Development time: 8-12 min"
       }
+    },
+    {
+      "number": "260526-250826",
+      "character": {
+        "uk": "Проводилися стабілізаційні роботи",
+        "en": "30 Iso"
+      },
+      "notes": {
+        "uk": "покращення адгезії. зменшення артефактів ісо 30",
+        "en": "Stabilisation work was carried out. Improved adhesion. Reduced artefacts. Heat resistance"
+      }
     }
   ]
 }
