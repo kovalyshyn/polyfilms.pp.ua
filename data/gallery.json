@@ -57,20 +57,6 @@
       }
     },
     {
-      "file": "/img/5467671085424776029 (3).jpg",
-      "alt": {
-        "uk": "Batch 260321 | Yashica Mat-124 | ISO 20| Photo by Igor Poliakov",
-        "en": "Batch 260321 | Yashica Mat-124 | ISO 20| Photo by Igor Poliakov"
-      }
-    },
-    {
-      "file": "/img/5208958580684429230.jpg",
-      "alt": {
-        "uk": "Batch Art303 end roll  13 frame | Yashica Mat-EM | ISO 20| Photo by Pavlo Parubochyi",
-        "en": "Batch Art303 end roll 13 frame| Yashica Mat-EM | ISO 20| Photo by Pavlo Parubochyi"
-      }
-    },
-    {
       "file": "/img/5208958580684429081 (1).jpg",
       "alt": {
         "uk": "Batch 260321 | Yashica Mat-EM | ISO 18| Photo by Pavlo Parubochyi",
@@ -85,31 +71,10 @@
       }
     },
     {
-      "file": "/img/b2da3020-3faa-401f-8f37-bef7c0e15379.jpg",
-      "alt": {
-        "uk": "Batch 260325 | Bronica GS-1  | ISO 20| Photo by Igor Poliakov",
-        "en": "Batch 260325 | Bronica GS-1  | ISO 20| Photo by Igor Poliakov"
-      }
-    },
-    {
-      "file": "/img/80b536b1-231c-4b7c-80ba-9b820f504071.jpg",
-      "alt": {
-        "uk": "Batch 260321 | Mamia RB | ISO 18| Photo by Pavlo Parubochyi",
-        "en": "Batch 260321 | Mamia RB | ISO 18| Photo by Pavlo Parubochyi"
-      }
-    },
-    {
       "file": "/img/5377753496951658520.jpg",
       "alt": {
         "uk": "Batch 260321 | Yashica Mat-EM | ISO 18| Photo by Pavlo Parubochyi",
         "en": "Batch 260321 | Yashica Mat-EM | ISO 18| Photo by Pavlo Parubochyi"
-      }
-    },
-    {
-      "file": "/img/5422386586638292415.jpg",
-      "alt": {
-        "uk": "Batch Art303 | ISO 25| Photo by Max Sheremet ",
-        "en": "Batch Art303 | ISO 25| Photo by Max Sheremet "
       }
     },
     {
@@ -120,18 +85,47 @@
       }
     },
     {
-      "file": "/img/5348040956147603503.jpg",
-      "alt": {
-        "uk": "Batch 260301| Andrii Guryev",
-        "en": "Batch 260301| Andrii Guryev"
-      }
-    },
-    {
       "file": "/img/5323733270908311691.jpg",
       "alt": {
         "uk": "Batch Art303 | Ikonta | ISO 25| Photo by Igor Poliakov",
         "en": "Batch Art303  | Ikonta | ISO 25| Photo by Igor Poliakov"
       }
-    }
+    },
+    {
+      "file": "/img/unnamed (4).jpg",
+      "alt": {
+        "uk": "ISO 30| Photo by Paul Thomas",
+        "en": "ISO 30| Photo by Paul Thomas"
+      }
+    },
+    {
+      "file": "/img/5341301533984891006.jpg",
+      "alt": {
+        "uk": "Graflex |prototipe 4x5| Photo by Ari Jaaksi",
+        "en": "Graflex |prototipe 4x5| Photo by Ari Jaaksi"
+      }
+    },
+    {
+      "file": "/img/5269708041228065667.jpg",
+      "alt": {
+        "uk": "ISO 20| Photo and print by Brusgin Ruslan",
+        "en": "ISO 20| Photo and print by Brusgin Ruslan"
+      }
+    },
+    {
+      "file": "/img/5282919798717226425.jpg",
+      "alt": {
+        "uk": "ISO 20| Photo by Sergiy Sereda",
+        "en": "ISO 20| Photo by Sergiy Sereda"
+      }
+    },
+    {
+      "file": "/img/5319130470421305824 (1).jpg",
+      "alt": {
+        "uk": "ISO 20| Photo by Pavlo Parubochyi",
+        "en": "ISO 20| Photo by Pavlo Parubochyi"
+      }
+    },
+    {}
   ]
 }
