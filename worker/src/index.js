@@ -1,6 +1,8 @@
 // PolyFilms pre-registration Worker.
 // Receives JSON POST from the site form, validates, sends emails via Resend.
 
+import { buildUserEmail } from "./user-email.js";
+
 const ALLOWED_ORIGINS = [
   "https://polyfilms.pp.ua",
   "https://www.polyfilms.pp.ua",
@@ -127,26 +129,6 @@ function buildTeamEmail(p, config) {
     subject: `[PolyFilms] Нова заявка: ${p.name}`,
     text,
     html,
-  };
-}
-
-function buildUserEmail(p) {
-  const isEn = p.lang === "en";
-  if (isEn) {
-    return {
-      subject: "PolyFilms — registration received",
-      text:
-        `Hi ${p.name},\n\n` +
-        `We've received your pre-registration. Our small team will get back to you within 2–3 days to confirm the order and shipping details.\n\n` +
-        `Thanks for supporting Ukrainian craft photography.\n\n— PolyFilms team`,
-    };
-  }
-  return {
-    subject: "PolyFilms — заявку отримано",
-    text:
-      `Вітаємо, ${p.name}!\n\n` +
-      `Ми отримали вашу попередню заявку. Наша команда звʼяжеться з вами протягом 2–3 днів, щоб узгодити деталі замовлення та доставки.\n\n` +
-      `Дякуємо, що підтримуєте українську крафтову фотографію.\n\n— Команда PolyFilms`,
   };
 }
 
