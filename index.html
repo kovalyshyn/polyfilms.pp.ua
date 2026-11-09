@@ -259,6 +259,7 @@
             .announcement-body { padding: 16px 24px 28px; }
         }
         .announcement-body p { margin: 0 0 12px; }
+        .announcement-body a { color: var(--highlight); text-underline-offset: 3px; }
         .announcement-body .question { color: var(--accent); font-style: italic; }
         .announcement-body .signature {
             margin-top: 18px;
@@ -319,7 +320,7 @@
         .press-source::after { content: " ↗"; }
 
         .support {
-            margin: -40px auto 80px;
+            margin: 0 auto 80px;
             max-width: 760px;
             text-align: center;
             padding: 0 24px;
@@ -388,7 +389,7 @@
         }
 
         .register {
-            margin: 80px auto;
+            margin: 48px auto 64px;
             max-width: 760px;
             border: 1px solid var(--border);
             background: var(--gray);
@@ -490,7 +491,7 @@
         .register-error[data-visible="true"] { display: block; }
 
         .testimonials {
-            margin: 80px auto;
+            margin: 64px auto;
             max-width: 760px;
             padding: 0 24px;
         }
@@ -592,6 +593,72 @@
         </div>
     </section>
 
+    <section class="register" id="pre-register" aria-label="Pre-registration">
+        <h3 class="register-title" data-register-text="header">Попередня реєстрація</h3>
+        <p class="register-intro" data-register-text="intro"></p>
+
+        <form class="register-form" id="register-form" novalidate hidden>
+            <div class="register-row">
+                <label class="register-field">
+                    <span data-register-text="labels.name"></span>
+                    <input type="text" name="name" required autocomplete="name" data-register-placeholder="placeholders.name">
+                </label>
+                <label class="register-field">
+                    <span data-register-text="labels.phone"></span>
+                    <input type="tel" name="phone" required autocomplete="tel" data-register-placeholder="placeholders.phone">
+                </label>
+            </div>
+
+            <label class="register-field">
+                <span data-register-text="labels.email"></span>
+                <input type="email" name="email" required autocomplete="email" data-register-placeholder="placeholders.email">
+            </label>
+
+            <label class="register-field">
+                <span data-register-text="labels.country"></span>
+                <select name="country" required>
+                    <option value="" disabled selected></option>
+                </select>
+            </label>
+
+            <label class="register-field">
+                <span data-register-text="labels.address"></span>
+                <textarea name="address" required autocomplete="street-address" data-register-placeholder="placeholders.address"></textarea>
+            </label>
+
+            <label class="register-field">
+                <span data-register-text="labels.comment"></span>
+                <textarea name="comment" data-register-placeholder="placeholders.comment"></textarea>
+            </label>
+
+            <input type="text" name="company" class="register-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+            <div class="register-error" id="register-error"></div>
+
+            <button type="submit" class="btn register-submit" data-register-text="labels.submit">Зареєструватись</button>
+        </form>
+
+        <div class="register-notice" id="register-success" hidden>
+            <h4 data-register-text="success.title"></h4>
+            <p data-register-text="success.body"></p>
+        </div>
+
+        <div class="register-notice" id="register-closed" hidden>
+            <h4 data-register-text="closed.title"></h4>
+            <p data-register-text="closed.body"></p>
+        </div>
+
+        <div class="register-notice" id="register-soon" hidden>
+            <h4 data-register-text="soon.title"></h4>
+            <p data-register-text="soon.body"></p>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials" aria-label="Testimonials" hidden>
+        <h3 class="testimonials-title" data-i18n="section_testimonials">Нам пишуть</h3>
+        <div class="testimonials-track" id="testimonials-track"></div>
+    </section>
+
     <div class="specs">
         <div class="spec-item"><b data-i18n="spec_sensitivity_label">Чутливість</b><span data-i18n="spec_sensitivity_value">ISO 20 / 14° DIN</span></div>
         <div class="spec-item"><b data-i18n="spec_spectrum_label">Спектр</b><span data-i18n="spec_spectrum_value">Орто (до 580 нм)</span></div>
@@ -622,6 +689,26 @@
         <p data-i18n="desc_main" data-i18n-html="true">Кожна партія виготовляється вручну з акцентом на високу щільність срібла та класичний тональний діапазон. Ми відродили ремесло емульсійного варіння, натхненне піонерами фотографії: <strong>Р. Меддоксом</strong>, <strong>Т. Торном Бейкером</strong>, <strong>Р. Моурі</strong> та <strong>М. Остманом</strong>.</p>
         <p style="color: #888; font-size: 0.9rem;" data-i18n="desc_footnote">*Ми використовуємо нетоксичні реактиви та відновлене срібло. Частина желатину (10-20%) замінена на синтетичні полімери для підвищення стабільності шару.</p>
     </div>
+
+    <section class="announcement" aria-label="Announcement from Igor">
+        <div class="announcement-header" data-i18n="announcement_header">Оновлене звернення Ігоря</div>
+        <div class="announcement-body" data-i18n="announcement_body" data-i18n-html="true">
+            <p>Дякую всім, хто зацікавився проєктом відродження фотоемульсій.</p>
+            <p>Я щиро зворушений вашими коментарями та підтримкою.</p>
+            <p>Наша невелика та віддана команда отримала багато запитів.</p>
+            <p class="question">Що ж ми робитимемо?</p>
+            <p>Ми робитимемо плівку! Продовжимо наші дослідження, щоб відкрити нові грані естетики фотоемульсії.</p>
+            <p class="question">Чи станете ви частиною цього дослідження?</p>
+            <p>Ваші кадри та ваші ідеї надихнуть нас і допоможуть вдосконалити рецептури й технологію ручного покриття.</p>
+            <p>Я хвилююся, бо робити плівку для себе — це одне, а робити її для вас — зовсім нове випробування.</p>
+            <p>З весни почалися справжні тести. Було чимало успіхів і невдач. Невдачі теж корисні: вони дають безцінний досвід, розвивають проєкт і покращують якість плівки. Я ділитимуся процесом та новинами на сторінці <a href="https://www.patreon.com/cw/Polyfilm" target="_blank" rel="noopener">Patreon</a> — там буде щоденник лабораторії та цікаві статті по темі.</p>
+            <p>Ціни на срібло зросли й продовжують рости, тому собівартість плівки поки нестабільна. Я шукатиму рішення, але наразі важко щось обіцяти…</p>
+            <p>Цей проєкт стане чудовою подорожжю!</p>
+            <p>Форма реєстрації відкрита.</p>
+            <p>Очікуйте листа від нашої команди — мені й самому цікаво, що з цього вийде!</p>
+            <p class="signature">Щиро, Ігор</p>
+        </div>
+    </section>
 
     <section style="margin: 60px 0;">
         <h3 style="text-align: center; text-transform: uppercase; letter-spacing: 2px;" data-i18n="section_dev">Рекомендації з проявки</h3>
@@ -678,25 +765,6 @@
     </table>
 
 
-<section class="announcement" aria-label="Announcement from Igor">
-    <div class="announcement-header" data-i18n="announcement_header">Звернення Ігоря</div>
-    <div class="announcement-body" data-i18n="announcement_body" data-i18n-html="true">
-        <p>Дякую всім, хто виявив цікавість до мого проєкту.</p>
-        <p>Я щиро зворушений вашими коментарями та підтримкою.</p>
-        <p>Наша невелика та віддана команда отримала багато запитів.</p>
-        <p class="question">Що ж ми робитимемо?</p>
-        <p>Ми робитимемо плівку! Продовжимо наші дослідження, щоб відкрити нові грані естетики фотоемульсії.</p>
-        <p class="question">Чи станете ви частиною цього дослідження?</p>
-        <p>Ваші кадри та ваші ідеї надихнуть нас і допоможуть стати кращими.</p>
-        <p>Я хвилююся, бо робити плівку для себе — це одне, а робити її для вас — зовсім нове випробування.</p>
-        <p>Наразі ми ставимо замовлення на паузу, оскільки вже маємо роботу на найближчий місяць. Лише за один день сайт повністю злетів з котушок.</p>
-        <p>Перші відправлення розпочнуться на початку літа. Я ділитимуся процесом. Ми домовилися про ціну <strong>330 грн за рулон</strong>, що включає матеріали та підтримку Сил оборони України. Доставка — Новою Поштою за ваш рахунок.</p>
-        <p>Думаю, цей проєкт стане чудовою подорожжю!</p>
-        <p>Очікуйте листа від нашої команди — мені й самому цікаво, що з цього вийде!</p>
-        <p class="signature">Щиро, Ігор</p>
-    </div>
-</section>
-
 <section class="press" aria-label="In the press">
     <p class="press-lead" data-i18n="press_lead">Закордонний автор замовив наші плівки й написав велику статтю про проєкт — найцілісніший погляд на цю історію збоку.</p>
     <a class="press-card" href="https://alexkess.substack.com/p/someone-is-making-film-by-hand-in" target="_blank" rel="noopener">
@@ -704,72 +772,6 @@
         <p class="press-headline">“Someone Is Making Film by Hand in Wartime Ukraine. I Ordered Four Rolls.”</p>
         <span class="press-source">The Empty Canvas · AlexKess</span>
     </a>
-</section>
-
-<section class="register" id="pre-register" aria-label="Pre-registration">
-    <h3 class="register-title" data-register-text="header">Попередня реєстрація</h3>
-    <p class="register-intro" data-register-text="intro"></p>
-
-    <form class="register-form" id="register-form" novalidate hidden>
-        <div class="register-row">
-            <label class="register-field">
-                <span data-register-text="labels.name"></span>
-                <input type="text" name="name" required autocomplete="name" data-register-placeholder="placeholders.name">
-            </label>
-            <label class="register-field">
-                <span data-register-text="labels.phone"></span>
-                <input type="tel" name="phone" required autocomplete="tel" data-register-placeholder="placeholders.phone">
-            </label>
-        </div>
-
-        <label class="register-field">
-            <span data-register-text="labels.email"></span>
-            <input type="email" name="email" required autocomplete="email" data-register-placeholder="placeholders.email">
-        </label>
-
-        <label class="register-field">
-            <span data-register-text="labels.country"></span>
-            <select name="country" required>
-                <option value="" disabled selected></option>
-            </select>
-        </label>
-
-        <label class="register-field">
-            <span data-register-text="labels.address"></span>
-            <textarea name="address" required autocomplete="street-address" data-register-placeholder="placeholders.address"></textarea>
-        </label>
-
-        <label class="register-field">
-            <span data-register-text="labels.comment"></span>
-            <textarea name="comment" data-register-placeholder="placeholders.comment"></textarea>
-        </label>
-
-        <input type="text" name="company" class="register-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-        <div class="register-error" id="register-error"></div>
-
-        <button type="submit" class="btn register-submit" data-register-text="labels.submit">Зареєструватись</button>
-    </form>
-
-    <div class="register-notice" id="register-success" hidden>
-        <h4 data-register-text="success.title"></h4>
-        <p data-register-text="success.body"></p>
-    </div>
-
-    <div class="register-notice" id="register-closed" hidden>
-        <h4 data-register-text="closed.title"></h4>
-        <p data-register-text="closed.body"></p>
-    </div>
-
-    <div class="register-notice" id="register-soon" hidden>
-        <h4 data-register-text="soon.title"></h4>
-        <p data-register-text="soon.body"></p>
-    </div>
-</section>
-
-<section class="testimonials" id="testimonials" aria-label="Testimonials" hidden>
-    <h3 class="testimonials-title" data-i18n="section_testimonials">Нам пишуть</h3>
-    <div class="testimonials-track" id="testimonials-track"></div>
 </section>
 
 <section class="support" aria-label="Support the project">
